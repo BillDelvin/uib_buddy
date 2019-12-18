@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin.css" rel="stylesheet">
 
+    <!-- Style -->
+    <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
