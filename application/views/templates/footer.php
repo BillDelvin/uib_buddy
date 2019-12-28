@@ -46,7 +46,6 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>js/sb-admin.min.js"></script>
-
 </body>
 
 </html>

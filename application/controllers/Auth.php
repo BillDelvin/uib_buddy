@@ -72,7 +72,7 @@ class Auth extends CI_Controller
 
 
         if ($this->form_validation->run() == false) { //jika validasi gagal makan tampil kan kembali form ini lagi 
-            $title['title'] = 'Buddy Registration';
+            $title['title'] = 'Buddy E-Recruitmen ';
             $this->load->view('templates/auth_header', $title);
             $this->load->view('auth/registration', array('error' => ''));
             $this->load->view('templates/auth_footer');
@@ -87,6 +87,7 @@ class Auth extends CI_Controller
     {
         $config['upload_path'] = './assets/img/';
         $config['allowed_types'] = 'jpg|png';
+        $config['overwrite'] = true;
         $config['max_size'] = 1000;
         $config['max_width'] = 1024;
         $config['max_height'] = 768;
@@ -94,9 +95,7 @@ class Auth extends CI_Controller
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('userfile')) {
-            // $error['error'] = "The image field is required";
-            $title['title'] = 'Buddy Registration';
-
+            $title['title'] = 'Buddy E-Recruitmen';
             $this->load->view('templates/auth_header', $title);
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');
