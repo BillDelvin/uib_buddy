@@ -39,13 +39,6 @@
                     <?= form_error('phoneNumber', '<small class="text-danger">', '</small>'); ?>
                 </div>
             </div>
-
-            <!-- <input type="file" id="userfile" name="userfile" size="20">
-            <br />
-            
-            <br />
-            <br /> -->
-
             <div class="mb-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -58,7 +51,6 @@
                 </div>
                 <?= form_error('userfile', '<small class="text-danger">', '</small>'); ?>
             </div>
-
             <button type="submit" class="btn btn-primary btn-block" href="login.html">Register</button>
             </form>
             <div class="text-center">
