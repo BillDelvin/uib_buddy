@@ -7,6 +7,7 @@ class Auth extends CI_Controller
     {
         parent::__construct(); // ini digunakan untuk memanggil costruct yang di ci controller
         $this->load->library('form_validation'); //untuk menjalankan form validation nya 
+        $this->load->helper(array('form', 'url'));
     }
 
     public function index()
@@ -58,20 +59,44 @@ class Auth extends CI_Controller
     public function registration()
     {
         // rule form validation
+
         $this->form_validation->set_rules('name', 'name', 'required|trim');
         $this->form_validation->set_rules('npm', 'npm', 'required|trim');
         $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[user.email]', [
             'is_unique' => 'This email already registered!'
         ]);
         $this->form_validation->set_rules('phoneNumber', 'phone number', 'required|trim');
-        // $this->form_validation->set_rules('password', 'password', 'required|trim|min_length[3]|matches[password1]', [
-        //     'matches' => 'Password dont match!',
-        //     'min_length' => 'Password to short!'
-        // ]);
-        // $this->form_validation->set_rules('password1', 'password', 'required|trim|matches[password]');
+        if (empty($_FILES['userfile']['name'])) {
+            $this->form_validation->set_rules('userfile', 'image', 'required');
+        }
+
 
         if ($this->form_validation->run() == false) { //jika validasi gagal makan tampil kan kembali form ini lagi 
             $title['title'] = 'Buddy Registration';
+            $this->load->view('templates/auth_header', $title);
+            $this->load->view('auth/registration', array('error' => ''));
+            $this->load->view('templates/auth_footer');
+        } else {
+            // cek image
+            $image = $_FILES['userfile']['name'];
+            $this->do_upload($image);
+        }
+    }
+
+    public function do_upload($image)
+    {
+        $config['upload_path'] = './assets/img/';
+        $config['allowed_types'] = 'jpg|png';
+        $config['max_size'] = 1000;
+        $config['max_width'] = 1024;
+        $config['max_height'] = 768;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('userfile')) {
+            // $error['error'] = "The image field is required";
+            $title['title'] = 'Buddy Registration';
+
             $this->load->view('templates/auth_header', $title);
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');
@@ -81,7 +106,7 @@ class Auth extends CI_Controller
                 'npm' => htmlspecialchars($this->input->post('npm', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'phone_number' => $this->input->post('phoneNumber'),
-                'image' => 'default.jpg',
+                'image' => $image
             ];
 
             $this->db->insert('buddy', $data);
