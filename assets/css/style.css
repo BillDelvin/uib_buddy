@@ -75,3 +75,15 @@ tbody tr td img {
 		text-align: center;
 	}
 }
+
+.aboutus h1 {
+	padding-top: 25px;
+	text-align: center;
+	font-weight: 600;
+}
+
+.aboutus p{
+	font-weight: 500;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
