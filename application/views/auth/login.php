@@ -1,6 +1,7 @@
 <div class="container">
     <div class="card card-login mx-auto mt-5">
         <div class="card-header text-center">Sign In</div>
+        <?= $this->session->flashdata('message'); ?>
         <div class="card-body">
             <?php echo form_open_multipart('auth/sign_in'); ?>
                 <div class="form-group">
@@ -14,7 +15,6 @@
                     <div class="form-label-group">
                         <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                         <label for="password">Password</label>
-                        <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block" href="<?= base_url('auth/sign_in'); ?>">Sign In</button>
