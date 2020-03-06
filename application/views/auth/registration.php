@@ -1,6 +1,6 @@
 <div class="container">
     <div class="card card-register mx-auto mt-5">
-        <div class="card-header text-center">Buddy Registration</div>
+        <div class="card-header text-center">Registration</div>
         <div class="card-body">
             <?php echo form_open_multipart('auth/registration'); ?>
             <div class="form-group">
@@ -54,7 +54,7 @@
             <button type="submit" class="btn btn-primary btn-block" href="login.html">Register</button>
             </form>
             <div class="text-center">
-                <a class="d-block small mt-3" href="<?= base_url('auth'); ?>">Login Page</a>
+                <a class="d-block small mt-3" href="<?= base_url('auth/sign_in'); ?>">Login Page</a>
             </div>
         </div>
     </div>
