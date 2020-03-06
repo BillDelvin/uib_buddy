@@ -35,7 +35,7 @@ $config['base_url'] = 'http://localhost/remake_uib_buddy/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'welcome.php';
 
 /*
 |--------------------------------------------------------------------------
