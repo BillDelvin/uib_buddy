@@ -10,9 +10,38 @@ class Auth extends CI_Controller
         $this->load->helper(array('form', 'url'));
     }
 
+    public function registration()
+    {
+        $this->form_validation->set_rules('npm', 'npm', 'required|trim|min_length[7]|max_length[7]|is_unique[users.npmUser]');
+        $this->form_validation->set_rules('name', 'name', 'required|trim');
+        $this->form_validation->set_rules('majors', 'majors', 'required|trim');
+        $this->form_validation->set_rules('password', 'password', 'required');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[password]');
+
+        if ($this->form_validation->run() == false) { //jika validasi gagal makan tampil kan kembali form ini lagi 
+            $title['title'] = 'Registration';
+            $this->load->view('templates/auth_header', $title);
+            $this->load->view('auth/registration', array('error' => ''));
+            $this->load->view('templates/auth_footer');
+        } else {
+            $data = [
+                'npmUser' => htmlspecialchars($this->input->post('npm', true)),
+                'nameMahasiswa' => htmlspecialchars(ucwords($this->input->post('name', true))),
+                'jurusanMahasiswa' => htmlspecialchars(ucwords($this->input->post('majors', true))),
+                'password' => password_hash($this->input->post('password',true), PASSWORD_BCRYPT),
+                'role' => 2
+            ];
+
+            $this->db->insert('users', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! you have successfully registered!</div>');
+            redirect('auth/registration');
+        }
+
+    }
+
     public function sign_in()
     {
-        $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('npm', 'npm', 'required|trim');
         $this->form_validation->set_rules('password', 'password', 'required|trim');
 
         if ($this->form_validation->run() == false) {
@@ -26,17 +55,17 @@ class Auth extends CI_Controller
         }
     }
 
+    // lanjut disini buat fix kan
     private function _login()
     {
-        $email = $this->input->post('email');
+        $npm = $this->input->post('npm');
         $password = $this->input->post('password');
-
-        $userData = $this->db->get_where('user', ['email' => $email])->row_array(); //get user data from database
-
+        
+        $userData = $this->db->get_where('users', ['npmUser' => $npm])->row_array(); //get user data from database
+        
         // validation login
         // if user account valid 
         if ($userData) {
-
             //check password
             if (password_verify($password, $userData['password'])) {
                 $userSession = [
@@ -53,33 +82,6 @@ class Auth extends CI_Controller
             // if error
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
             redirect('auth');
-        }
-    }
-
-    public function registration()
-    {
-        // rule form validation
-
-        $this->form_validation->set_rules('name', 'name', 'required|trim');
-        $this->form_validation->set_rules('npm', 'npm', 'required|trim');
-        $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[user.email]', [
-            'is_unique' => 'This email already registered!'
-        ]);
-        $this->form_validation->set_rules('phoneNumber', 'phone number', 'required|trim');
-        if (empty($_FILES['userfile']['name'])) {
-            $this->form_validation->set_rules('userfile', 'image', 'required');
-        }
-
-
-        if ($this->form_validation->run() == false) { //jika validasi gagal makan tampil kan kembali form ini lagi 
-            $title['title'] = 'Buddy E-Recruitmen ';
-            $this->load->view('templates/auth_header', $title);
-            $this->load->view('auth/registration', array('error' => ''));
-            $this->load->view('templates/auth_footer');
-        } else {
-            // cek image
-            $image = $_FILES['userfile']['name'];
-            $this->do_upload($image);
         }
     }
 
@@ -122,3 +124,27 @@ class Auth extends CI_Controller
         redirect('auth');
     }
 }
+
+
+// // rule form validation
+// $this->form_validation->set_rules('npm', 'npm', 'required|trim|min_length[7]|max_length[7]');
+// $this->form_validation->set_rules('name', 'name', 'required|trim');
+// $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[user.email]', [
+//     'is_unique' => 'This email already registered!'
+// ]);
+// $this->form_validation->set_rules('phoneNumber', 'phone number', 'required|trim');
+// if (empty($_FILES['userfile']['name'])) {
+//     $this->form_validation->set_rules('userfile', 'image', 'required');
+// }
+
+
+// if ($this->form_validation->run() == false) { //jika validasi gagal makan tampil kan kembali form ini lagi 
+//     $title['title'] = 'Buddy E-Recruitmen ';
+//     $this->load->view('templates/auth_header', $title);
+//     $this->load->view('auth/registration', array('error' => ''));
+//     $this->load->view('templates/auth_footer');
+// } else {
+//     // cek image
+//     $image = $_FILES['userfile']['name'];
+//     $this->do_upload($image);
+// }
