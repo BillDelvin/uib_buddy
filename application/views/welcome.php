@@ -9,7 +9,7 @@
   	</button>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav ml-auto">
+		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
 			<a class="nav-link font-weight-bold" href="#home">Home <span class="sr-only">(current)</span></a>
 			</li>
@@ -17,6 +17,9 @@
 			<a class="nav-link font-weight-bold" href="#aboutus">About Us</a>
 			</li>
 		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<a href="<?= base_url('auth/sign_in'); ?>" class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign in</a>
+		</form>
 	</div>
 </nav>
 

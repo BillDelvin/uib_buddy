@@ -10,13 +10,13 @@ class Auth extends CI_Controller
         $this->load->helper(array('form', 'url'));
     }
 
-    public function index()
+    public function sign_in()
     {
         $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'password', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $title['title'] = 'UIB E-Recruitment Buddy';
+            $title['title'] = 'Sign In';
             $this->load->view('templates/auth_header', $title);
             $this->load->view('auth/login');
             $this->load->view('templates/auth_footer');
