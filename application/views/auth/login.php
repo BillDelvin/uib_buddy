@@ -1,14 +1,13 @@
 <div class="container">
     <div class="card card-login mx-auto mt-5">
         <div class="card-header text-center">Sign In</div>
-        <?= $this->session->flashdata('message'); ?>
         <div class="card-body">
-            <form method="post" action="<?= base_url('auth'); ?>">
+            <?php echo form_open_multipart('auth/sign_in'); ?>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" id="email" name="email" class="form-control" placeholder="Email address" value="<?= set_value('email'); ?>">
-                        <label for="email">NPM</label>
-                        <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
+                        <input type="number" id="npm" name="npm" class="form-control" placeholder="Email address" value="<?= set_value('npm'); ?>">
+                        <label for="npm">NPM</label>
+                        <?= form_error('npm', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>
                 <div class="form-group">
@@ -18,7 +17,7 @@
                         <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block" href="index.html">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-block" href="<?= base_url('auth/sign_in'); ?>">Sign In</button>
             </form>
             <div class="text-center">
                 <div class="row"> 
