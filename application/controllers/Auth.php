@@ -62,25 +62,33 @@ class Auth extends CI_Controller
         $password = $this->input->post('password');
         
         $userData = $this->db->get_where('users', ['npmUser' => $npm])->row_array(); //get user data from database
+        $role = $userData['role'];
         
-        // validation login
-        // if user account valid 
         if ($userData) {
             //check password
-            if (password_verify($password, $userData['password'])) {
+            if ( password_verify($password, $userData['password']) ) {
                 $userSession = [
-                    'name' => $userData['name'],
-                    'email' => $userData['email']
+                    'npmUser' => $userData['npmUser'],
+                    'nameMahasiswa' => $userData['nameMahasiswa']
                 ];
-                $this->session->set_userdata($userSession);
-                redirect('user');
+                // check role
+                if($role === "1"){
+                    var_dump($role);die;
+                    $this->session->set_userdata($userSession);
+                    redirect('user');
+                } else {
+                    $this->session-set_userdata($userSession);
+                    redirect('user/landingPage');
+                }
+                
             } else {
+                var_dump('salah');die;
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
-                redirect('auth');
+                redirect('auth/sign_in');
             }
         } else {
             // if error
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This Account is not registered!</div>');
             redirect('auth');
         }
     }
