@@ -6,13 +6,16 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct(); // ini digunakan untuk memanggil costruct yang di ci controller
-        $this->load->library('form_validation'); //untuk menjalankan form validation nya 
+        $this->load->library('session');
+        $this->load->library('form_validation');
         $this->load->helper(array('form', 'url'));
     }
 
     public function registration()
     {
-        $this->form_validation->set_rules('npm', 'npm', 'required|trim|min_length[7]|max_length[7]|is_unique[users.npmUser]');
+        $this->form_validation->set_rules('npm', 'npm', 'required|trim|min_length[7]|max_length[7]|is_unique[users.npmUser]', [
+            'is_unique' => 'This npm already registered!'
+        ]);
         $this->form_validation->set_rules('name', 'name', 'required|trim');
         $this->form_validation->set_rules('majors', 'majors', 'required|trim');
         $this->form_validation->set_rules('password', 'password', 'required');
@@ -55,41 +58,46 @@ class Auth extends CI_Controller
         }
     }
 
-    // lanjut disini buat fix kan
     private function _login()
     {
         $npm = $this->input->post('npm');
         $password = $this->input->post('password');
         
         $userData = $this->db->get_where('users', ['npmUser' => $npm])->row_array(); //get user data from database
-        $role = $userData['role'];
-        
+
         if ($userData) {
+
             //check password
             if ( password_verify($password, $userData['password']) ) {
-                $userSession = [
+                $session = [
                     'npmUser' => $userData['npmUser'],
-                    'nameMahasiswa' => $userData['nameMahasiswa']
+                    'nameMahasiswa' => $userData['nameMahasiswa'],
+                    'role' => $userData['role']
                 ];
-                // check role
-                if($role === "1"){
-                    var_dump($role);die;
-                    $this->session->set_userdata($userSession);
-                    redirect('user');
-                } else {
-                    $this->session-set_userdata($userSession);
-                    redirect('user/landingPage');
+                // check the session
+                $this->session->set_userdata($session);
+                if(isset($_SESSION['npmUser'])){
+                    // check role
+                    if($userData['role'] == 1){
+                        redirect('admin');
+                    } else {
+                        // echo('user');
+                        redirect('user');
+                    }
+                } else{
+                    echo("session tidak masuk");
+                    die;
                 }
                 
             } else {
-                var_dump('salah');die;
+                echo('halo');
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
                 redirect('auth/sign_in');
             }
         } else {
             // if error
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This Account is not registered!</div>');
-            redirect('auth');
+            redirect('auth/sign_in');
         }
     }
 
@@ -126,10 +134,10 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata('nama');
-        $this->session->unset_userdata('email');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logout</div>');
-        redirect('auth');
+        $array = array('npmUser', 'nameMahasiswa', 'role');
+        $this->session->unset_userdata($array);
+        // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logout</div>');
+        redirect('welcome');
     }
 }
 
