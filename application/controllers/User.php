@@ -3,34 +3,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct(); // ini digunakan untuk memanggil costruct yang di ci controller
+        $this->load->library('session');
+    }
+
     public function index()
     {
-        $userData['title'] = 'Dashboard';
-        $userData['users'] = $this->db->get_where('users', ['npmUser' => $this->session->userdata('npmUser')])->row_array(); // get from session
+        $userData['title'] = 'Welcome Buddy';
+        $userData['user']= $this->session->userdata();
 
-        $this->load->view('templates/header', $userData);
-        $this->load->view('templates/sidebar');
-        $this->load->view('user/index', $userData);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/index_header', $userData);
+        $this->load->view('welcome', $userData);
+        $this->load->view('templates/index_footer');
     }
 
-    public function landingPage(){
-        $title['title'] = "Welcome to Buddy UIB";
-		$this->load->view('templates/index_header', $title);
-		$this->load->view('welcome', );
-		$this->load->view('templates/index_footer');
-    }
+    // public function buddyList()
+    // {
+    //     $userData['title'] = "Buddy List";
+    //     $userData['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    //     $result = $this->db->get('buddy')->result();
+    //     $buddyData["buddy"] = json_decode(json_encode($result), true);
 
-    public function buddyList()
-    {
-        $userData['title'] = "Buddy List";
-        $userData['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $result = $this->db->get('buddy')->result();
-        $buddyData["buddy"] = json_decode(json_encode($result), true);
-
-        $this->load->view('templates/header', $userData);
-        $this->load->view('templates/sidebar');
-        $this->load->view('user/buddy_list', $buddyData);
-        $this->load->view('templates/footer');
-    }
+    //     $this->load->view('templates/header', $userData);
+    //     $this->load->view('templates/sidebar');
+    //     $this->load->view('user/buddy_list', $buddyData);
+    //     $this->load->view('templates/footer');
+    // }
 }
