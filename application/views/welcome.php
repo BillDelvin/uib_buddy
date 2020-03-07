@@ -16,9 +16,25 @@
 			<li class="nav-item">
 			<a class="nav-link font-weight-bold" href="#aboutus">About Us</a>
 			</li>
+			<li class="nav-item">
+			<a class="nav-link font-weight-bold" href="#event">Event</a>
+			</li>
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
-			<a href="<?= base_url('auth/sign_in'); ?>" class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign in</a>
+			<?php if(!isset($_SESSION['npmUser'])) : ?>
+				<a href="<?= base_url('auth/sign_in'); ?>" class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign in</a>
+			<?php else : ?>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<?php echo($user['nameMahasiswa'] ." ". $user['npmUser']); ?>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Log Out</a>
+						</div>
+					</li>
+				</ul>
+			<?php endif; ?>
 		</form>
 	</div>
 </nav>
