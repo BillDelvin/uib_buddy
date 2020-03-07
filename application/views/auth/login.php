@@ -6,9 +6,8 @@
             <?php echo form_open_multipart('auth/sign_in'); ?>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="number" id="npm" name="npm" class="form-control" placeholder="Email address" value="<?= set_value('npm'); ?>">
+                        <input type="number" id="npm" name="npm" class="form-control" placeholder="NPM" value="<?= set_value('npm'); ?>">
                         <label for="npm">NPM</label>
-                        <?= form_error('npm', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>
                 <div class="form-group">
