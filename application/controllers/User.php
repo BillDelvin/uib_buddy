@@ -14,11 +14,21 @@ class User extends CI_Controller
 
     public function index()
     {
-        $userData['title'] = 'Welcome Buddy';
+        $userData['title'] = 'Welcome';
         $userData['user']= $this->session->userdata();
 
         $this->load->view('templates/index_header', $userData);
         $this->load->view('welcome', $userData);
+        $this->load->view('templates/index_footer');
+    }
+
+    public function event()
+    {
+        $userData['title'] = 'Buddy Event';
+        $userData['user']= $this->session->userdata();
+
+        $this->load->view('templates/index_header', $userData);
+        $this->load->view('user/event', $userData);
         $this->load->view('templates/index_footer');
     }
 }
