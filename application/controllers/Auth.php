@@ -39,7 +39,6 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! you have successfully registered!</div>');
             redirect('auth/registration');
         }
-
     }
 
     public function sign_in()
@@ -62,11 +61,9 @@ class Auth extends CI_Controller
     {
         $npm = $this->input->post('npm');
         $password = $this->input->post('password');
-        
-        $userData = $this->db->get_where('users', ['npmUser' => $npm])->row_array(); //get user data from database
+        $userData = $this->db->get_where('users', ['npmUser' => $npm])->row_array();
 
         if ($userData) {
-
             //check password
             if ( password_verify($password, $userData['password']) ) {
                 $session = [
@@ -101,7 +98,7 @@ class Auth extends CI_Controller
         }
     }
 
-    public function do_upload($image)
+    private function do_upload($image)
     {
         $config['upload_path'] = './assets/img/';
         $config['allowed_types'] = 'jpg|png';
@@ -136,7 +133,6 @@ class Auth extends CI_Controller
     {
         $array = array('npmUser', 'nameMahasiswa', 'role');
         $this->session->unset_userdata($array);
-        // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logout</div>');
         redirect('welcome');
     }
 }
