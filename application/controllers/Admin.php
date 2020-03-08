@@ -9,16 +9,13 @@ class Admin extends CI_Controller
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url'));
-        if(empty($this->session->userdata())) {
+        if(!$this->session->userdata()) {
             redirect("welcome");
         }
     }
 
     public function index()
     {
-        // if($this->session->userdata()){
-        //     redirect('admin');
-        // }
 
         $userData['title'] = 'Welcome Admin';
         $userData['user']= $this->session->userdata();
@@ -31,9 +28,6 @@ class Admin extends CI_Controller
 
     public function eventList()
     {
-        // if($this->session->userdata('npmUser')){
-        //     redirect('admin');
-        // }
 
         $userData['title'] = 'Event List';
         $userData['user']= $this->session->userdata();
@@ -48,10 +42,6 @@ class Admin extends CI_Controller
 
     public function eventRegistration()
     {
-        // if($this->session->userdata('npmUser')){
-        //     redirect('admin');
-        // }
-
         $userData['title'] = 'Event Registration';
         $userData['user']= $this->session->userdata();
 
@@ -112,22 +102,9 @@ class Admin extends CI_Controller
         redirect('admin/eventList');
     }
 
-    // public function buddyList()
-    // {
-    //     $userData['title'] = "Buddy List";
-    //     $userData['user'] = $this->session->userdata();
-        // $userData['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        // $result = $this->db->get('buddy')->result();
-        // $buddyData["buddy"] = json_decode(json_encode($result), true);
-    
-    //     $this->load->view('admin/header', $userData);
-    //     $this->load->view('admin/sidebar');
-    //     $this->load->view('admin/buddy_list', $userData);
-    //     $this->load->view('admin/footer');
-    // }
-
     public function note()
     {
+
         $userData['title'] = "Note";
         $userData['user'] = $this->session->userdata();
         $getData = $this->db->get('note')->result();
@@ -168,6 +145,9 @@ class Admin extends CI_Controller
     {
         $userData['title'] = "Update Note";
         $userData['user'] = $this->session->userdata();
+        $userData['note'] = $this->db->get_where('note', ['idNote' => $idNote])->row_array();
+        $userData['id'] = $idNote;
+
 
         $this->form_validation->set_rules('noteTitle', 'note title', 'required|trim');
         $this->form_validation->set_rules('noteDescription', 'note description', 'required|trim');
@@ -177,7 +157,34 @@ class Admin extends CI_Controller
             $this->load->view('admin/sidebar');
             $this->load->view('admin/updateNote',$userData);
             $this->load->view('admin/footer');
+        } else {
+            $data = [
+                'noteTitle' => htmlspecialchars($this->input->post('noteTitle')),
+                'noteDescription' => htmlspecialchars($this->input->post('noteDescription'))
+            ];
+            $this->db->where('idNote', $idNote);
+            $this->db->update('note', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Note Update successfully! </div>');
+            redirect('admin/updateNote/'.$idNote);
         }
+    }
+
+    public function deleteNote($idNote)
+    {
+        $userData['event'] = $this->db->get_where('note', ['idNote' => $idNote])->row_array();
+
+        $this->db->delete('note', array('idNote' => $idNote)); 
+        redirect('admin/note');
+    }
+
+    public function landingPage()
+    {
+        $userData['title'] = 'Welcome Admin';
+        $userData['user']= $this->session->userdata();
+
+        $this->load->view('templates/index_header', $userData);
+		$this->load->view('welcome', $userData);
+		$this->load->view('templates/index_footer');
     }
 }
 
