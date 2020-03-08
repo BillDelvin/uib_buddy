@@ -2,7 +2,7 @@
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   	<a class="navbar-brand" href="#">
-  		<img src="./assets/img/logo_UIB_White.png" width="40" alt="">
+  		<img src="<?= base_url('assets/	'); ?>img/logo_UIB_White.png" width="40" alt="">
   	</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     	<span class="navbar-toggler-icon"></span>
@@ -27,10 +27,13 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<?php echo($user['nameMahasiswa'] ." ". $user['npmUser']); ?>
+							<?= $user['nameMahasiswa'] ." ". $user['npmUser']; ?>
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Log Out</a>
+							<?php if($user['role'] == 1) : ?>
+								<a class="dropdown-item" href="<?= base_url('admin'); ?>">Dashboard</a>
+							<?php endif; ?>
+							<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Log Out</a>
 						</div>
 					</li>
 				</ul>
@@ -44,13 +47,13 @@
 		<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active" data-interval="10000">
-				<img src="./assets/img/buddy_1.png" class="d-block w-100">
+				<img src="<?= base_url('assets/') ?>img/buddy_1.png" class="d-block w-100">
 				</div>
 				<div class="carousel-item" data-interval="2000">
-				<img src="./assets/img/buddy_2.png" class="d-block w-100">
+				<img src="<?= base_url('assets/') ?>img/buddy_2.png" class="d-block w-100">
 				</div>
 				<div class="carousel-item">
-				<img src="./assets/img/buddy_3.png" class="d-block w-100">
+				<img src="<?= base_url('assets/') ?>img/buddy_3.png" class="d-block w-100">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
