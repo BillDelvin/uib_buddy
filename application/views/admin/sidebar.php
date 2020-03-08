@@ -8,22 +8,33 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/eventList'); ?>">
-            <i class="fas fa-calendar-week"></i>
+            <i class="fas fa-clipboard-list"></i>
             <span>List Event</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/buddyList'); ?>">
+        <a class="nav-link" href="<?= base_url('admin/listBuddy'); ?>">
             <i class="fas fa-users"></i>
             <span>List Buddy</span>
         </a>
+    </li><li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/event'); ?>">
+            <i class="fas fa-calendar-week"></i>
+            <span>Event</span>
+        </a>
     </li>
-    <!-- <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/note'); ?>">
+            <i class="fas fa-list-ul"></i>
             <span>Note</span>
         </a>
-    </li> -->
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/landingPage'); ?>">
+        <i class="fas fa-pager"></i>
+            <span>Landing Page</span>
+        </a>
+    </li>
 </ul>
 
 <div id="content-wrapper">
