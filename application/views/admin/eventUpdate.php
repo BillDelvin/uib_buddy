@@ -16,7 +16,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Event Title</span>
                                 </div>
-                                <textarea class="form-control text-break" name="eventTitle" id="eventTitle" aria-label="Event Title" value="<?= $event['eventTitle']; ?>"><?= $event['eventTitle']; ?></textarea>
+                                <textarea class="form-control" name="eventTitle" id="eventTitle" aria-label="Event Title" value="<?= $event['eventTitle']; ?>"><?= $event['eventTitle']; ?></textarea>
                             </div>
                             <?= form_error('eventTitle', '<small class="text-danger">', '</small>'); ?>
                         </div>
@@ -30,7 +30,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Event Description</span>
                                 </div>
-                                <textarea class="form-control text-break" name="eventDescription" id="eventDescription" aria-label="Event Description" value="<?= $event['eventDescription']; ?>"><?= $event['eventDescription']; ?></textarea>
+                                <textarea class="form-control" name="eventDescription" id="eventDescription" aria-label="Event Description" value="<?= $event['eventDescription']; ?>"><?= $event['eventDescription']; ?></textarea>
                             </div>
                             <?= form_error('eventDescription', '<small class="text-danger">', '</small>'); ?>
                         </div>
