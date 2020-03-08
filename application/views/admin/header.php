@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin.css" rel="stylesheet">
 
+    <!-- datatable -->
+    <link href="<?= base_url('assets/'); ?>css/datatables.min.css" rel="stylesheet" >
+
     <!-- Style -->
     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
 
