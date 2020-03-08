@@ -112,18 +112,72 @@ class Admin extends CI_Controller
         redirect('admin/eventList');
     }
 
-    public function buddyList()
-    {
-        $userData['title'] = "Buddy List";
-        $userData['user'] = $this->session->userdata();
+    // public function buddyList()
+    // {
+    //     $userData['title'] = "Buddy List";
+    //     $userData['user'] = $this->session->userdata();
         // $userData['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         // $result = $this->db->get('buddy')->result();
         // $buddyData["buddy"] = json_decode(json_encode($result), true);
     
-        $this->load->view('templates/header', $userData);
-        $this->load->view('templates/sidebar');
-        $this->load->view('admin/buddy_list', $userData);
-        $this->load->view('templates/footer');
+    //     $this->load->view('admin/header', $userData);
+    //     $this->load->view('admin/sidebar');
+    //     $this->load->view('admin/buddy_list', $userData);
+    //     $this->load->view('admin/footer');
+    // }
+
+    public function note()
+    {
+        $userData['title'] = "Note";
+        $userData['user'] = $this->session->userdata();
+        $getData = $this->db->get('note')->result();
+        $userData['note'] = json_decode(json_encode($getData), true);
+
+        $this->load->view('admin/header',$userData);
+        $this->load->view('admin/sidebar');
+        $this->load->view('admin/note', $userData);
+        $this->load->view('admin/footer');
+    }
+
+    public function addNote()
+    {
+        $userData['title'] = "Adding Note";
+        $userData['user'] = $this->session->userdata();
+
+        $this->form_validation->set_rules('noteTitle', 'note title', 'required|trim');
+        $this->form_validation->set_rules('noteDescription', 'note description', 'required|trim');
+        
+        if ($this->form_validation->run() == false) {
+            $this->load->view('admin/header',$userData);
+            $this->load->view('admin/sidebar');
+            $this->load->view('admin/addNote');
+            $this->load->view('admin/footer');
+        } else {
+            $data =[
+                'noteTitle' => htmlspecialchars($this->input->post('noteTitle', true)),
+                'noteDescription' => htmlspecialchars($this->input->post('noteDescription', true)),
+            ];
+            
+            $this->db->insert('note', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Event registered!</div>');
+            redirect('admin/addNote');
+        }
+    }
+
+    public function updateNote($idNote)
+    {
+        $userData['title'] = "Update Note";
+        $userData['user'] = $this->session->userdata();
+
+        $this->form_validation->set_rules('noteTitle', 'note title', 'required|trim');
+        $this->form_validation->set_rules('noteDescription', 'note description', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('admin/header', $userData);
+            $this->load->view('admin/sidebar');
+            $this->load->view('admin/updateNote',$userData);
+            $this->load->view('admin/footer');
+        }
     }
 }
 
