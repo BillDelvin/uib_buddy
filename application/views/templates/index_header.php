@@ -12,12 +12,15 @@
     <title><?= $title; ?></title>
     
     <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- bootstrap -->
-    <link href="<?= base_url('assets/') ?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/') ?>css/style.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>css/sb-admin.css" rel="stylesheet">
+
+    <!-- bootstrap -->
+    <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
 
 </head>
