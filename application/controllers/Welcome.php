@@ -21,8 +21,10 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$title['title'] = "Welcome to Buddy UIB";
+		$userData['user']= $this->session->userdata();
+
 		$this->load->view('templates/index_header', $title);
-		$this->load->view('welcome');
+		$this->load->view('welcome', $userData);
 		$this->load->view('templates/index_footer');
 	}
 }
