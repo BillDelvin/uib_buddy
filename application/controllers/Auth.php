@@ -98,37 +98,6 @@ class Auth extends CI_Controller
         }
     }
 
-    private function do_upload($image)
-    {
-        $config['upload_path'] = './assets/img/';
-        $config['allowed_types'] = 'jpg|png';
-        $config['overwrite'] = true;
-        $config['max_size'] = 1000;
-        $config['max_width'] = 1024;
-        $config['max_height'] = 768;
-
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('userfile')) {
-            $title['title'] = 'Buddy E-Recruitmen';
-            $this->load->view('templates/auth_header', $title);
-            $this->load->view('auth/registration');
-            $this->load->view('templates/auth_footer');
-        } else {
-            $data = [
-                'name' => htmlspecialchars($this->input->post('name', true)),
-                'npm' => htmlspecialchars($this->input->post('npm', true)),
-                'email' => htmlspecialchars($this->input->post('email', true)),
-                'phone_number' => $this->input->post('phoneNumber'),
-                'image' => $image
-            ];
-
-            $this->db->insert('buddy', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! you have successfully registered as a Buddy</div>');
-            redirect('auth');
-        }
-    }
-
     public function logout()
     {
         $array = array('npmUser', 'nameMahasiswa', 'role');
