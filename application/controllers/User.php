@@ -36,11 +36,13 @@ class User extends CI_Controller
         $this->load->view('templates/index_footer');
     }
     
-    public function buddyRegisterForm()
+    public function buddyRegisterForm($idEvent)
     {       
-        // $this->form_validation->set_rules('email', 'email', 'required|trim|is_unique[user.email]', [
-        //     'is_unique' => 'This email already registered!'
-        // ]);
+        $userData['title'] = 'Buddy Event';
+        $userData['user']= $this->session->userdata();
+        $getData = $this->db->get_where('event_buddy', ['idEvent' => $idEvent])->row_array();
+        $userData['id'] = $getData['idEvent'];
+
         $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|xss_clean');
         $this->form_validation->set_rules('noPhoneMahasiswa', 'phone number', 'required|trim');
         $this->form_validation->set_rules('urlVideo', 'url video', 'required|trim');
@@ -53,16 +55,15 @@ class User extends CI_Controller
             $userData['user']= $this->session->userdata();
 
             $this->load->view('templates/index_header', $userData);
-            $this->load->view('user/buddyRegisterForm');
+            $this->load->view('user/buddyRegisterForm', $userData);
             $this->load->view('templates/index_footer');
         } else {
-            $image = $_FILES['uploadImage']['name'];
-            // besok lanjut disini 
-            // $this->do_upload($image);
+            $imageUpload = $_FILES['uploadImage']['name'];
+            $this->do_upload($imageUpload, $userData['id'] );
         }
     }
 
-    private function do_upload($image)
+    private function do_upload($imageUpload, $id)
     {
         $config['upload_path'] = './assets/buddy_img/';
         $config['allowed_types'] = 'jpg|png';
@@ -76,25 +77,26 @@ class User extends CI_Controller
         if (!$this->upload->do_upload('uploadImage')) {
             $userdata['title'] = 'Buddy Event';
             $userData['user']= $this->session->userdata();
-            $npmUser = $userData['user']['npmUser'];
 
             $this->load->view('templates/auth_header', $userdata);
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');
         } else {
+            $userData['user']= $this->session->userdata();
+
             $data = [
-                'idEvent' => htmlspecialchars($this->input->post('name', true)),
-                'npmUser' => $npmUser,
-                'email' => htmlspecialchars($this->input->post('npm', true)),
-                'phone_number' => $this->input->post('phoneNumber'),
+                'idEvent' => $id,
+                'npmUser' => $userData['user']['npmUser'],
+                'email' => htmlspecialchars($this->input->post('email', true)),
+                'noPhoneMahasiswa' => $this->input->post('noPhoneMahasiswa'),
                 'urlVideo' => $this->input->post('urlVideo'),
-                'image' => $image,
+                'image' => $imageUpload,
                 'status' => 'process'
             ];
 
             $this->db->insert('buddy_event_registration', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! you have successfully registered as a Buddy</div>');
-            // redirect('auth'); mesti di redirect ke url registrasi itu 
+            redirect('user/buddyRegisterForm/'.$id); 
         }
     }
-}
+    }
