@@ -66,21 +66,22 @@ class User extends CI_Controller
     private function do_upload($imageUpload, $id)
     {
         $config['upload_path'] = './assets/buddy_img/';
-        $config['allowed_types'] = 'jpg|png';
+        $config['allowed_types'] = 'jpg|jpeg|png';
         $config['overwrite'] = true;
-        $config['max_size'] = 1000;
-        $config['max_width'] = 1024;
-        $config['max_height'] = 768;
+        $config['max_size'] = 2048000;
+        $config['max_width'] = 5000;
+        $config['max_height'] = 5000;
 
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('uploadImage')) {
             $userdata['title'] = 'Buddy Event';
             $userData['user']= $this->session->userdata();
+            $userData['id'] = $id;
 
-            $this->load->view('templates/auth_header', $userdata);
-            $this->load->view('auth/registration');
-            $this->load->view('templates/auth_footer');
+            $this->load->view('templates/index_header', $userdata);
+            $this->load->view('user/buddyRegisterForm', $userData);
+            $this->load->view('templates/index_footer');
         } else {
             $userData['user']= $this->session->userdata();
 
