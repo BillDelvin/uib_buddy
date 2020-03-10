@@ -105,27 +105,3 @@ class Auth extends CI_Controller
         redirect('welcome');
     }
 }
-
-
-// // rule form validation
-// $this->form_validation->set_rules('npm', 'npm', 'required|trim|min_length[7]|max_length[7]');
-// $this->form_validation->set_rules('name', 'name', 'required|trim');
-// $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[user.email]', [
-//     'is_unique' => 'This email already registered!'
-// ]);
-// $this->form_validation->set_rules('phoneNumber', 'phone number', 'required|trim');
-// if (empty($_FILES['userfile']['name'])) {
-//     $this->form_validation->set_rules('userfile', 'image', 'required');
-// }
-
-
-// if ($this->form_validation->run() == false) { //jika validasi gagal makan tampil kan kembali form ini lagi 
-//     $title['title'] = 'Buddy E-Recruitmen ';
-//     $this->load->view('templates/auth_header', $title);
-//     $this->load->view('auth/registration', array('error' => ''));
-//     $this->load->view('templates/auth_footer');
-// } else {
-//     // cek image
-//     $image = $_FILES['userfile']['name'];
-//     $this->do_upload($image);
-// }
