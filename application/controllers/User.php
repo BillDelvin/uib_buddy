@@ -69,8 +69,8 @@ class User extends CI_Controller
         $config['allowed_types'] = 'jpg|jpeg|png';
         $config['overwrite'] = true;
         $config['max_size'] = 2048000;
-        $config['max_width'] = 500;
-        $config['max_height'] = 500;
+        $config['max_width'] = 1024;
+        $config['max_height'] = 768;
 
         $this->load->library('upload', $config);
 
