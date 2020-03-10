@@ -6,7 +6,7 @@
         <div class="card-header text-center">Registration</div>
         <?= $this->session->flashdata('message'); ?>
         <div class="card-body">
-            <?php echo form_open_multipart('user/buddyRegisterForm'); ?>
+            <?php echo form_open_multipart('user/buddyRegisterForm/'.$id); ?>
                 <!-- email -->
                 <div class="form-group">
                     <div class="form-row">
@@ -52,7 +52,7 @@
                     </div>
                     <?= form_error('uploadImage', '<small class="text-danger">', '</small>'); ?>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block" href="<?= base_url('user/buddyRegisterForm'); ?>"> 
+                <button type="submit" class="btn btn-primary btn-block" href="<?= base_url('user/buddyRegisterForm/'.$id); ?>"> 
                     Register
                 </button>
             </form>
