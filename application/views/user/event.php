@@ -54,7 +54,7 @@
 					<?php if(!isset($_SESSION['npmUser'])) : ?>
 						<a href="<?= base_url('auth/sign_in') ?>" class="btn btn-primary">Register</a>
 					<?php else : ?>
-                    	<a href="<?= base_url('user/buddyRegisterForm') ?>" class="btn btn-primary">Register</a>
+                    	<a value="<?= $e['idEvent']; ?>" href="<?= base_url('user/buddyRegisterForm/'.$e['idEvent']); ?>" class="btn btn-primary" >Register</a>
 					<?php endif; ?>
                 </div>
             </div>
