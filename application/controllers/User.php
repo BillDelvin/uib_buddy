@@ -91,7 +91,7 @@ class User extends CI_Controller
                 'noPhoneMahasiswa' => $this->input->post('noPhoneMahasiswa'),
                 'urlVideo' => $this->input->post('urlVideo'),
                 'image' => $imageUpload,
-                'status' => 'process'
+                'status' => 'register'
             ];
 
             $this->db->insert('buddy_event_registration', $data);
