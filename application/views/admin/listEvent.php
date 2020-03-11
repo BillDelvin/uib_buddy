@@ -4,7 +4,7 @@
     </div>
     <div>
         <!-- new table -->
-        <table id="example" class="display" style="width:100%">
+        <table id="example" class="display compact hover" style="width:100%">
             <thead>
                 <tr>
                     <th>No</th>
