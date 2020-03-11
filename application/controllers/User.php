@@ -97,7 +97,7 @@ class User extends CI_Controller
 
             $this->db->insert('buddy_event_registration', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations! you have successfully registered as a Buddy</div>');
-            redirect('user/buddyRegisterForm/'.$id); 
+            redirect('user/event'); 
         }
     }
     }
