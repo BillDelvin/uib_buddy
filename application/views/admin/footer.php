@@ -38,17 +38,14 @@
 <!-- datatable -->
 <script src="<?= base_url('assets/'); ?>js/datatables.min.js"></script>
 
+<!-- jquery data table -->
+<script src="<?= base_url('assets/'); ?>js/datatables.min.js"></script>
+
 <!-- Custom scripts for all pages-->
-<script src="<?= base_url('assets/'); ?>js/sb-admin.min.js"></script>
+<script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
 
 <!-- script -->
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    });
-</script>
+<script src="<?= base_url('assets/'); ?>js/script.js"></script>
 </body>
 
 </html>
