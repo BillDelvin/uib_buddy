@@ -4,7 +4,6 @@
     </div>
     <div class="card card-register mx-auto mt-5">
         <div class="card-header text-center">Registration</div>
-        <?= $this->session->flashdata('message'); ?>
         <div class="card-body">
             <?php echo form_open_multipart('user/buddyRegisterForm/'.$id); ?>
                 <!-- email -->
