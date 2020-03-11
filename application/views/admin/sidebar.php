@@ -13,11 +13,6 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/listBuddy'); ?>">
-            <i class="fas fa-users"></i>
-            <span>List Buddy</span>
-        </a>
-    </li><li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/event'); ?>">
             <i class="fas fa-calendar-week"></i>
             <span>Event</span>
