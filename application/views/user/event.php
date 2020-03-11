@@ -43,6 +43,7 @@
 
 <div class="container pt-3">
     <h3 class="text-center">EVENT</h3>
+	<?= $this->session->flashdata('message'); ?>
     <?php foreach ($event as $e ) { ?>
         <div class="pb-3">
             <div class="card">
