@@ -9,6 +9,7 @@ class Admin extends CI_Controller
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url'));
+        $this->load->model('m_buddyEventRegistration');
         if(!$this->session->userdata()) {
             redirect("welcome");
         }
@@ -16,7 +17,6 @@ class Admin extends CI_Controller
 
     public function index()
     {
-
         $userData['title'] = 'Welcome Admin';
         $userData['user']= $this->session->userdata();
 
@@ -100,6 +100,35 @@ class Admin extends CI_Controller
 
         $this->db->delete('event_buddy', array('idEvent' => $idEvent)); 
         redirect('admin/eventList');
+    }
+
+    public function event()
+    {
+        $userData['title'] = 'Event';
+        $userData['user']= $this->session->userdata();
+        $getData= $this->db->get('event_buddy')->result();
+        $userData["eventBuddy"] = json_decode(json_encode($getData), true);
+
+        // $userData['event'] = $this->m_buddyEventRegistration->buddyEventRegistration();
+        // var_dump($data);die;
+
+        $this->load->view('admin/header', $userData);
+        $this->load->view('admin/sidebar');
+        $this->load->view('admin/event', $userData);
+        $this->load->view('admin/footer');
+    }
+
+    public function eventMember($id)
+    {
+        $userData['title'] = 'Event';
+        $userData['user']= $this->session->userdata();
+        $getData= $this->m_buddyEventRegistration->buddyEventRegistration($id);
+        $userData["buddy"] = json_decode(json_encode($getData), true);
+
+        $this->load->view('admin/header', $userData);
+        $this->load->view('admin/sidebar');
+        $this->load->view('admin/eventMember', $userData);
+        $this->load->view('admin/footer');
     }
 
     public function note()
