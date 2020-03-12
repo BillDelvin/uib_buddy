@@ -42,10 +42,8 @@
         <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mb-5"> <?= $user["nameMahasiswa"]; ?></span> 
-                    <img class="img-profile rounded-circle" width="30px" src="<?= base_url('assets/'); ?>img/logo_uib.png">
+                    <img class="img-profile rounded-circle" width="30px" src="<?= base_url('assets/'); ?>img/logo_uib.png"><span class="mb-5"> <?= $user["nameMahasiswa"]; ?></span> 
                     
-                    <!-- <i class="fas fa-user-circle fa-fw fa-2x"></i> -->
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">Logout</a>
