@@ -38,9 +38,6 @@
 <!-- datatable -->
 <script src="<?= base_url('assets/'); ?>js/datatables.min.js"></script>
 
-<!-- jquery data table -->
-<script src="<?= base_url('assets/'); ?>js/datatables.min.js"></script>
-
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
 
