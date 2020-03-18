@@ -44,22 +44,33 @@
 <div class="container pt-3">
     <h3 class="text-center">EVENT</h3>
 	<?= $this->session->flashdata('message'); ?>
+	<?php $i = 0; ?>
     <?php foreach ($event as $e ) { ?>
         <div class="pb-3">
             <div class="card">
                 <div class="card-header">
                     <h5><?= $e["eventTitle"]; ?></h5>
-                </div>
+				</div>
                 <div class="card-body">
                     <p class="card-text"><?= $e["eventDescription"]; ?></p>
 					<?php if(!isset($_SESSION['npmUser'])) : ?>
 						<a href="<?= base_url('auth/sign_in') ?>" class="btn btn-primary">Register</a>
-					<?php else : ?>
-                    	<a value="<?= $e['idEvent']; ?>" href="<?= base_url('user/buddyRegisterForm/'.$e['idEvent']); ?>" class="btn btn-primary" >Register</a>
+					<?php elseif (isset($_SESSION['npmUser'])) : ?>
+						<?php
+							foreach($idEvent as $id){
+								$id;
+							}	 
+						?>
+						<?php if( in_array($e['idEvent'], $id ) ) : ?>
+							<a value="<?= $e['idEvent']; ?>" href="<?= base_url('user/buddyRegisterForm/'.$e['idEvent']); ?>" class="btn btn-primary" >Alrady Register</a>
+						<?php else : ?>	
+							<a value="<?= $e['idEvent']; ?>" href="<?= base_url('user/buddyRegisterForm/'.$e['idEvent']); ?>" class="btn btn-primary" >Register</a>
+						<?php endif;?>
 					<?php endif; ?>
                 </div>
             </div>
         </div>
-    <?php } ?>
+		<?php $i++; ?>
+	<?php } ?>
 </div>
 <!-- /.container-fluid -->
