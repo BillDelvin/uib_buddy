@@ -2,8 +2,8 @@
     <div class="text-right pb-3">
         <a href="<?= base_url('admin/eventRegistration'); ?>"><i class="fas fa-3x fa-plus-circle"></i></a>
     </div>
-    <div>
-        <table id="example" class="display compact hover" style="width:100%">
+    <div class="table-responsive">
+        <table id="myTabel" class="table display" style="width:100%">
             <thead>
                 <tr>
                     <th>No</th>
@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <?php $i = 1; ?>
-                <?php foreach ($eventBuddy as $event ) { ?>
+                <?php foreach ($eventBuddy as $event) { ?>
                     <tr>
                         <td data-label="No"><?= $i; ?></td>
                         <td data-label="Event Name"><?= $event["eventTitle"]; ?></td>
