@@ -9,6 +9,7 @@ class User extends CI_Controller
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'email','url'));
+        $this->load->model('m_buddyEventRegistration');
         if(empty($this->session->userdata())) {
             redirect("welcome");
         }
@@ -30,6 +31,11 @@ class User extends CI_Controller
         $userData['user']= $this->session->userdata();
         $getData = $this->db->get('event_buddy')->result();
         $userData['event'] = json_decode(json_encode($getData), true);
+
+        $session = $this->session->userdata();
+        $IdEvent = $this->m_buddyEventRegistration->idEvent($session['npmUser']);
+        $arrayIdEvent = json_decode(json_encode($IdEvent), true);
+        $userData['idEvent'] = $arrayIdEvent;
 
         $this->load->view('templates/index_header', $userData);
         $this->load->view('user/event', $userData);
