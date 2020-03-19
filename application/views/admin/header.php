@@ -14,11 +14,12 @@
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Page level plugin CSS-->
-    <link href="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin.css" rel="stylesheet">
+    
+    <!-- Page level plugin CSS-->
+    <link href="<?= base_url('assets/'); ?>css/DataTables-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
 
     <!-- bootstrap -->
     <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
