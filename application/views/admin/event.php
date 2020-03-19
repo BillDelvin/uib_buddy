@@ -1,8 +1,7 @@
 <div class="container-fluid">
     <h3 class="text-center">EVENT</h3>
-
     <div class="table-responsive pt-3"> 
-        <table id="myTabel" class="table display" style="width:100%">
+        <table id="myTable" class="table table-striped table-bordered" width="100%">
             <thead>
                 <tr>
                     <th>No</th>

@@ -3,7 +3,7 @@
         <a href="<?= base_url('admin/event'); ?>"><i class="fas fa-3x fa-arrow-left"></i></a>
     </div>
     <div class="table-responsive"> 
-        <table id="myTabel" class="display" style="width:100%">
+        <table id="myTable" class="display cell-border hover" style="width:100%">
             <thead>
                 <tr>
                     <th>NPM</th>
