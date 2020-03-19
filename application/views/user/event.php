@@ -44,7 +44,6 @@
 <div class="container pt-3">
     <h3 class="text-center">EVENT</h3>
 	<?= $this->session->flashdata('message'); ?>
-	<?php $i = 0; ?>
     <?php foreach ($event as $e ) { ?>
         <div class="pb-3">
             <div class="card">
@@ -56,21 +55,15 @@
 					<?php if(!isset($_SESSION['npmUser'])) : ?>
 						<a href="<?= base_url('auth/sign_in') ?>" class="btn btn-primary">Register</a>
 					<?php elseif (isset($_SESSION['npmUser'])) : ?>
-						<?php
-							foreach($idEvent as $id){
-								$id;
-							}	 
-						?>
-						<?php if( in_array($e['idEvent'], $id ) ) : ?>
+						<?php if( in_array( $e['idEvent'], $idEvent)) : ?>
 							<a value="<?= $e['idEvent']; ?>" href="<?= base_url('user/buddyRegisterForm/'.$e['idEvent']); ?>" class="btn btn-primary" >Alrady Register</a>
 						<?php else : ?>	
 							<a value="<?= $e['idEvent']; ?>" href="<?= base_url('user/buddyRegisterForm/'.$e['idEvent']); ?>" class="btn btn-primary" >Register</a>
-						<?php endif;?>
+						<?php endif; ?>
 					<?php endif; ?>
                 </div>
             </div>
         </div>
-		<?php $i++; ?>
 	<?php } ?>
 </div>
 <!-- /.container-fluid -->

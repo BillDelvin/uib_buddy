@@ -9,7 +9,7 @@ class m_buddyEventRegistration extends CI_Model
     }
 
     function idEvent($session){
-        $query = $this->db->query("SELECT ber.idEvent FROM buddy_event_registration ber WHERE ber.npmUser = $session");
-        return $query->result();
+        $query = $this->db->query("SELECT ber.idEvent FROM buddy_event_registration ber WHERE ber.npmUser = $session")->result_array();
+        return $query;
     }
 }

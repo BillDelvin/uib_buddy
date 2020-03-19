@@ -32,14 +32,26 @@ class User extends CI_Controller
         $getData = $this->db->get('event_buddy')->result();
         $userData['event'] = json_decode(json_encode($getData), true);
 
-        $session = $this->session->userdata();
-        $IdEvent = $this->m_buddyEventRegistration->idEvent($session['npmUser']);
-        $arrayIdEvent = json_decode(json_encode($IdEvent), true);
-        $userData['idEvent'] = $arrayIdEvent;
+        if(!$this->session->userdata('npmUser')){
+            $this->load->view('templates/index_header', $userData);
+            $this->load->view('user/event', $userData);
+            $this->load->view('templates/index_footer');
+        } else {
+            $IdEvent = $this->m_buddyEventRegistration->idEvent($this->session->userdata('npmUser'));
+            $arrayIdEvent = json_decode(json_encode($IdEvent), true);
+            $arr = array();
+            foreach($arrayIdEvent as $i) {
+                array_push($arr, $i['idEvent']);
+            }
+            $userData['idEvent'] = $arr;
+            $this->load->view('templates/index_header', $userData);
+            $this->load->view('user/event', $userData);
+            $this->load->view('templates/index_footer');
+        }
 
-        $this->load->view('templates/index_header', $userData);
-        $this->load->view('user/event', $userData);
-        $this->load->view('templates/index_footer');
+        // $this->load->view('templates/index_header', $userData);
+        // $this->load->view('user/event', $userData);
+        // $this->load->view('templates/index_footer');
     }
     
     public function buddyRegisterForm($idEvent)
