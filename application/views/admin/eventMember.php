@@ -2,8 +2,8 @@
     <div class="text-left pb-3">
         <a href="<?= base_url('admin/event'); ?>"><i class="fas fa-3x fa-arrow-left"></i></a>
     </div>
-    <div class="table-responsive"> 
-        <table id="myTable" class="display cell-border hover" style="width:100%">
+    <div class="table-responsive pb-3"> 
+        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>NPM</th>
