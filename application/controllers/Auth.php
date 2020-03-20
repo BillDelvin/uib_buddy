@@ -78,7 +78,6 @@ class Auth extends CI_Controller
                     if($userData['role'] == 1){
                         redirect('admin');
                     } else {
-                        // echo('user');
                         redirect('user');
                     }
                 } else{
