@@ -31,8 +31,10 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<?php if($user['role'] == 1) : ?>
 								<a class="dropdown-item" href="<?= base_url('admin'); ?>">Dashboard</a>
+							<?php else : ?>
+								<a class="dropdown-item" href="<?= base_url('user/yourEvent'); ?>">Your Event</a>
+								<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Log Out</a>
 							<?php endif; ?>
-							<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Log Out</a>
 						</div>
 					</li>
 				</ul>
@@ -56,7 +58,7 @@
 						<a href="<?= base_url('auth/sign_in') ?>" class="btn btn-primary">Register</a>
 					<?php elseif (isset($_SESSION['npmUser'])) : ?>
 						<?php if( in_array( $e['idEvent'], $idEvent)) : ?>
-							<a value="<?= $e['idEvent']; ?>" href="<?= base_url('user/buddyRegisterForm/'.$e['idEvent']); ?>" class="btn btn-primary" >Alrady Register</a>
+							<button class="btn btn-primary" disabled>Already Register</button>
 						<?php else : ?>	
 							<a value="<?= $e['idEvent']; ?>" href="<?= base_url('user/buddyRegisterForm/'.$e['idEvent']); ?>" class="btn btn-primary" >Register</a>
 						<?php endif; ?>
