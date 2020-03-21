@@ -9,7 +9,7 @@
                 <th scope="col">Phone Number</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="word-break : break-word">
             <?php foreach ($buddy as $b) { ?>
                 <tr>
                     <td data-label="Picture"><img src="<?= base_url('assets/img/' . $b['image']); ?>" alt="<?= $b["name"]; ?>"></td>
