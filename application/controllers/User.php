@@ -48,10 +48,6 @@ class User extends CI_Controller
             $this->load->view('user/event', $userData);
             $this->load->view('templates/index_footer');
         }
-
-        // $this->load->view('templates/index_header', $userData);
-        // $this->load->view('user/event', $userData);
-        // $this->load->view('templates/index_footer');
     }
     
     public function buddyRegisterForm($idEvent)
@@ -110,7 +106,7 @@ class User extends CI_Controller
                 'noPhoneMahasiswa' => $this->input->post('noPhoneMahasiswa'),
                 'urlVideo' => $this->input->post('urlVideo'),
                 'image' => $imageUpload,
-                'status' => 'register'
+                'status' => 'pending'
             ];
 
             $this->db->insert('buddy_event_registration', $data);
@@ -118,4 +114,16 @@ class User extends CI_Controller
             redirect('user/event'); 
         }
     }
+
+    public function yourEvent()
+    {
+        $userData['title'] = 'Your Event';
+        $userData['user']= $this->session->userdata(); 
+        $userEvent = $this->m_buddyEventRegistration->yourEvent($this->session->userdata('npmUser'));
+        $userData['userEvent'] = $userEvent;
+        $this->load->view('templates/index_header', $userData);
+        $this->load->view('user/yourEvent', $userData);
+        $this->load->view('templates/index_footer');
+
     }
+}
