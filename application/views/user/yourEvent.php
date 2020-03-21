@@ -60,7 +60,7 @@
                     <tr>
                         <td data-label="No"><?= $i; ?></td>
                         <td data-label="Event Name"><?= $ue["eventTitle"]; ?></td>
-                        <td data-label="Event Date">waktu</td>
+                        <td data-label="Event Date"><?= $ue["eventDate"]; ?></td>
                         <td data-label="Email"><?= $ue['status']; ?></td>
                     </tr>
                 <?php $i++; ?>
