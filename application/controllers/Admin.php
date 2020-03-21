@@ -47,6 +47,7 @@ class Admin extends CI_Controller
 
         $this->form_validation->set_rules('eventTitle', 'event title', 'required|trim');
         $this->form_validation->set_rules('eventDescription', 'event description', 'required|trim');
+        $this->form_validation->set_rules('eventDate', 'event date', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('admin/header', $userData);
@@ -57,6 +58,7 @@ class Admin extends CI_Controller
             $data =[
                 'eventTitle' => htmlspecialchars($this->input->post('eventTitle', true)),
                 'eventDescription' => htmlspecialchars($this->input->post('eventDescription', true)),
+                'eventDate' => htmlspecialchars($this->input->post('eventDate', true)),
             ];
             
             $this->db->insert('event_buddy', $data);
@@ -75,6 +77,7 @@ class Admin extends CI_Controller
 
         $this->form_validation->set_rules('eventTitle', 'event title', 'required|trim');
         $this->form_validation->set_rules('eventDescription', 'event description', 'required|trim');
+        $this->form_validation->set_rules('eventDate', 'event date', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('admin/header', $userData);
@@ -84,7 +87,8 @@ class Admin extends CI_Controller
         } else {
             $data = [
                 'eventTitle' => htmlspecialchars($this->input->post('eventTitle')),
-                'eventDescription' => htmlspecialchars($this->input->post('eventDescription'))
+                'eventDescription' => htmlspecialchars($this->input->post('eventDescription')),
+                'eventDate' => htmlspecialchars($this->input->post('eventDate'))
             ];
             $this->db->where('idEvent', $idEvent);
             $this->db->update('event_buddy', $data);
