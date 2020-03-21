@@ -16,7 +16,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="word-break: break-word">
                 <?php foreach ($buddy as $b ) { ?>
                     <tr>
                         <td data-label="NPM"><?= $b["npmUser"]; ?></td>
