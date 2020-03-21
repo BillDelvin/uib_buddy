@@ -50,10 +50,11 @@
         <div class="pb-3">
             <div class="card">
                 <div class="card-header">
-                    <h5><?= $e["eventTitle"]; ?></h5>
+					<h5><?= $e["eventTitle"]; ?></h5>
 				</div>
                 <div class="card-body">
                     <p class="card-text"><?= $e["eventDescription"]; ?></p>
+					<p class="card-text">Event Date : <?= $e["eventDate"]; ?></p>
 					<?php if(!isset($_SESSION['npmUser'])) : ?>
 						<a href="<?= base_url('auth/sign_in') ?>" class="btn btn-primary">Register</a>
 					<?php elseif (isset($_SESSION['npmUser'])) : ?>
