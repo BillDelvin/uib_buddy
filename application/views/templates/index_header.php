@@ -17,10 +17,14 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin.css" rel="stylesheet">
 
+    <!-- data table -->
+    <link href="<?= base_url('assets/'); ?>css/DataTables-1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
+
     <!-- bootstrap -->
     <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <!-- style -->
     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
 
 </head>
