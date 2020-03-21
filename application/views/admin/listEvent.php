@@ -12,7 +12,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="word-break : break-word">
                 <?php $i = 1; ?>
                 <?php foreach ($eventBuddy as $event) { ?>
                     <tr>
