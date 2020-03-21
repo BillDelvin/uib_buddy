@@ -36,6 +36,20 @@
                         </div>
                     </div>
                 </div>
+                <!-- event date -->
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-12">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Event Date</span>
+                                </div>
+                                <input type="date" class="form-control" name="eventDate" id="eventDate" aria-label="Event Date" value="<?= $event['eventDate']; ?>">
+                            </div>
+                            <?= form_error('eventDate', '<small class="text-danger">', '</small>'); ?>
+                        </div>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block" href="<?= base_url('admin/eventUpdate'); ?>"> 
                     Update Event
                 </button>
