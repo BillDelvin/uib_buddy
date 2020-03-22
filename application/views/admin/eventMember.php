@@ -29,7 +29,8 @@
                         <td data-label="Url Video"> <a href="<?= $b["urlVideo"]; ?>"><?= $b["urlVideo"]; ?></a> </td>
                         <td data-label="Status"><?= $b["status"]; ?></td>
                         <td data-label="Action"> 
-                            <a href="<?= site_url('admin/eventMember/'.$b['npmUser']); ?>" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+                            <a href="<?= site_url('admin/deleteEventMember/'.$b['npmUser']); ?>" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+                            <a href="<?= base_url('admin/interviewEventMember/'.$b['npmUser']); ?>" class="btn btn-outline-success"><i class="fas fa-check"></i></i></button>
                         </td>
                     </tr>
                 <?php } ?>
