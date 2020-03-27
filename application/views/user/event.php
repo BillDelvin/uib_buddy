@@ -32,7 +32,7 @@
 							<?php if($user['role'] == 1) : ?>
 								<a class="dropdown-item" href="<?= base_url('admin'); ?>">Dashboard</a>
 							<?php else : ?>
-								<a class="dropdown-item" href="<?= base_url('user/yourEvent'); ?>">Your Event</a>
+								<a class="dropdown-item" href="<?= base_url('user/yourEvent'); ?>">My Event</a>
 								<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Log Out</a>
 							<?php endif; ?>
 						</div>
