@@ -130,33 +130,43 @@ class Admin extends CI_Controller
         $getData= $this->m_buddyEventRegistration->buddyEventRegistration($id);
         $userData["buddy"] = json_decode(json_encode($getData), true);
 
-        $getIdEvent = $this->uri->segment('3');
-        $getData = $this->db->get_where('buddy_event_registration', ['idEvent' => $getIdEvent])->row_array();
-        $userData['idEvent'] = $getData['idEvent'];
-
         $this->load->view('admin/header', $userData);
         $this->load->view('admin/sidebar');
         $this->load->view('admin/eventMember', $userData);
         $this->load->view('admin/footer');
     }
 
-    public function interviewEventMember($npmUser)
+    public function interviewEventMember($id , $event)
     {
-        $user = $this->db->get_where('buddy_event_registration', ['npmUser'=> $npmUser])->row_array();
-        var_dump($user);die;
-        
-        // $arr = array();
-        // foreach($userIdInterview as $i) {
-        //     array_push($arr, $i['idEvent']);
-        //     array_push($arr, $i['npmUser']);
-        // }
-        // var_dump($arr);die;
+        $user = $this->db->get_where('buddy_event_registration', ['idRegistration'=> $id])->row_array();
+        $userId = $user['idRegistration'];
 
-        // $this->db->where('idEvent', $userIdInterview);
-        // $this->db->set('status', 'interview process');
-        // $this->db->update('buddy_event_registration');
-        // redirect('admin/eventMember/'.$id);    
+        $this->db->where('idRegistration', $userId);
+        $this->db->set('status', 'interview process');
+        $this->db->update('buddy_event_registration');
+        redirect('admin/eventMember/'.$event);    
+    }
 
+    public function declineEventMember($id , $event)
+    {
+        $user = $this->db->get_where('buddy_event_registration', ['idRegistration'=> $id])->row_array();
+        $userId = $user['idRegistration'];
+
+        $this->db->where('idRegistration', $userId);
+        $this->db->set('status', 'decline');
+        $this->db->update('buddy_event_registration');
+        redirect('admin/eventMember/'.$event); 
+    }
+
+    public function acceptEventMember($id , $event)
+    {
+        $user = $this->db->get_where('buddy_event_registration', ['idRegistration'=> $id])->row_array();
+        $userId = $user['idRegistration'];
+
+        $this->db->where('idRegistration', $userId);
+        $this->db->set('status', 'accept');
+        $this->db->update('buddy_event_registration');
+        redirect('admin/eventMember/'.$event); 
     }
 
     public function note()
