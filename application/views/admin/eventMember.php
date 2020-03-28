@@ -28,9 +28,17 @@
                         <td data-label="Phone Number"><?= $b["noPhoneMahasiswa"]; ?></td>
                         <td data-label="Url Video"> <a href="<?= $b["urlVideo"]; ?>"><?= $b["urlVideo"]; ?></a> </td>
                         <td data-label="Status"><?= $b["status"]; ?></td>
-                        <td data-label="Action"> 
-                            <a href="<?= site_url('admin/deleteEventMember/'.$b['npmUser']); ?>" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
-                            <a href="<?= base_url('admin/interviewEventMember/'.$b['npmUser']); ?>" class="btn btn-outline-success"><i class="fas fa-check"></i></i></button>
+                        <td data-label="Action">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="<?= base_url('admin/interviewEventMember/'.$b['idRegistration'].'/'.$b['idEvent']); ?>">interview process</a>
+                                    <a class="dropdown-item" href="<?= base_url('admin/acceptEventMember/'.$b['idRegistration'].'/'.$b['idEvent']); ?>">Accept</a>
+                                    <a class="dropdown-item" href="<?= site_url('admin/declineEventMember/'.$b['idRegistration'].'/'.$b['idEvent']); ?>" class="btn btn-outline-danger">Decline</a>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 <?php } ?>
