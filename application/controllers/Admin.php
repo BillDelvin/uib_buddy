@@ -147,7 +147,7 @@ class Admin extends CI_Controller
         redirect('admin/eventMember/'.$event); 
     }
 
-    public function interviewEventMember($id , $event)
+    public function interviewEventMember($id, $event)
     {
         $user = $this->db->get_where('buddy_event_registration', ['idRegistration'=> $id])->row_array();
         $userId = $user['idRegistration'];
