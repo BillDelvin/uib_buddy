@@ -136,6 +136,17 @@ class Admin extends CI_Controller
         $this->load->view('admin/footer');
     }
 
+    public function pendingEventMember($id, $event)
+    {
+        $user = $this->db->get_where('buddy_event_registration', ['idRegistration'=> $id])->row_array();
+        $userId = $user['idRegistration'];
+
+        $this->db->where('idRegistration', $userId);
+        $this->db->set('status', 'pending');
+        $this->db->update('buddy_event_registration');
+        redirect('admin/eventMember/'.$event); 
+    }
+
     public function interviewEventMember($id , $event)
     {
         $user = $this->db->get_where('buddy_event_registration', ['idRegistration'=> $id])->row_array();
@@ -167,6 +178,17 @@ class Admin extends CI_Controller
         $this->db->set('status', 'accept');
         $this->db->update('buddy_event_registration');
         redirect('admin/eventMember/'.$event); 
+    }
+
+    public function interviewSchedule()
+    {
+        $userData['title'] = 'Event';
+        $userData['user']= $this->session->userdata();
+
+        $this->load->view('admin/header', $userData);
+        $this->load->view('admin/sidebar');
+        $this->load->view('admin/interviewSchedule');
+        $this->load->view('admin/footer');
     }
 
     public function note()
