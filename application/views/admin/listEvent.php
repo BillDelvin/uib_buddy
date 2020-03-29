@@ -20,7 +20,7 @@
                         <td data-label="No"><?= $i; ?></td>
                         <td data-label="Event Name"><?= $event["eventTitle"]; ?></td>
                         <td data-label="Event Description"><?= $event["eventDescription"]; ?></td>
-                        <td data-label="Event Date"><?= $event["eventDate"]; ?></td>
+                        <td data-label="Event Date" style="white-space:nowrap"><?= $event["eventDate"]; ?></td>
                         <td data-label="Action" style="white-space: nowrap;"> 
                             <a href="<?= site_url('admin/eventDelete/'.$event['idEvent']); ?>" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
                             <a href="<?= site_url('admin/eventUpdate/'.$event['idEvent']); ?>" class="btn btn-outline-secondary" value="<?= $event['idEvent']; ?>"> <i class="fas fa-edit"></i> </a> 
