@@ -34,6 +34,7 @@
                                     Action
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="<?= base_url('admin/pendingEventMember/'.$b['idRegistration'].'/'.$b['idEvent']); ?>">pending</a>
                                     <a class="dropdown-item" href="<?= base_url('admin/interviewEventMember/'.$b['idRegistration'].'/'.$b['idEvent']); ?>">interview process</a>
                                     <a class="dropdown-item" href="<?= base_url('admin/acceptEventMember/'.$b['idRegistration'].'/'.$b['idEvent']); ?>">Accept</a>
                                     <a class="dropdown-item" href="<?= site_url('admin/declineEventMember/'.$b['idRegistration'].'/'.$b['idEvent']); ?>" class="btn btn-outline-danger">Decline</a>
