@@ -19,6 +19,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/interviewSchedule'); ?>">
+            <i class="fas fa-clock"></i>
+            <span>Interview Schedule</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/note'); ?>">
             <i class="fas fa-list-ul"></i>
             <span>Note</span>
