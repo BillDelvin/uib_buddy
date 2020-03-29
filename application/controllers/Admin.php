@@ -153,7 +153,7 @@ class Admin extends CI_Controller
         $userId = $user['idRegistration'];
 
         $this->db->where('idRegistration', $userId);
-        $this->db->set('status', 'interview process');
+        $this->db->set('status', 'interview');
         $this->db->update('buddy_event_registration');
         redirect('admin/eventMember/'.$event);    
     }
