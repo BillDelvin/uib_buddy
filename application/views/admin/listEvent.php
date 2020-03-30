@@ -7,9 +7,9 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Event Name</th>
+                    <th style="white-space:nowrap">Event Name</th>
                     <th>Event Description</th>
-                    <th>Event Date</th>
+                    <th style="white-space:nowrap">Event Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
