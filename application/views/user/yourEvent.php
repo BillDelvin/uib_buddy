@@ -32,7 +32,7 @@
                                 <?php if($user['role'] == 1) : ?>
                                     <a class="dropdown-item" href="<?= base_url('admin'); ?>">Dashboard</a>
                                 <?php else : ?>
-                                    <a class="dropdown-item" href="<?= base_url('user/yourEvent'); ?>">Your Event</a>
+                                    <a class="dropdown-item" href="<?= base_url('user/yourEvent'); ?>">My Event</a>
                                     <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Log Out</a>
                                 <?php endif; ?>
                             </div>
@@ -63,7 +63,7 @@
                         <td data-label="Event Date"><?= $ue["eventDate"]; ?></td>
                         <td data-label="Email">
                             <?php if( $ue['status'] == 'interview' ) :?>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
                                     <?= $ue['status']; ?>
                                 </button>
                             <?php else : ?>
@@ -83,17 +83,41 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Interview Schedule</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        interview process
+        <div class="row">
+            <div class="col-md-4 text-right">
+                <label>Event Name :</label>
+            </div>
+            <div class="col-md-8">
+                <label>Event Title</label>
+            </div>
+            <div class="col-md-4 text-right">
+                <label>Interview Date :</label>
+            </div>
+            <div class="col-md-8">
+                <label>Kamis , 27 Juni 2019</label>
+            </div>
+            <div class="col-md-4 text-right">
+                <label>Interview Time :</label>
+            </div>
+            <div class="col-md-8">
+                <label>09:30</label>
+            </div>
+            <div class="col-md-4 text-right">
+                <label>Interview Place :</label>
+            </div>
+            <div class="col-md-8">
+                <label>UIB</label>
+            </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
