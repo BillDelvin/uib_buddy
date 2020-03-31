@@ -114,9 +114,6 @@ class Admin extends CI_Controller
         $getData= $this->db->get('event_buddy')->result();
         $userData["eventBuddy"] = json_decode(json_encode($getData), true);
 
-        // $userData['event'] = $this->m_buddyEventRegistration->buddyEventRegistration();
-        // var_dump($data);die;
-
         $this->load->view('admin/header', $userData);
         $this->load->view('admin/sidebar');
         $this->load->view('admin/event', $userData);
@@ -182,13 +179,60 @@ class Admin extends CI_Controller
 
     public function interviewSchedule()
     {
-        $userData['title'] = 'Event';
+        $userData['title'] = 'Interview Schedule';
         $userData['user']= $this->session->userdata();
 
+        $getData= $this->m_buddyEventRegistration->interviewSchedule(); 
+        $arr = array();
+        foreach($getData as $i) {
+            array_push($arr, $i);
+        }
+        $userData['interviewData'] = $arr;
+
+        // $getData = $this->db->get_where('interview_schedule')->result_array();
+        // $userData['interviewData'] = $getData;
+    
         $this->load->view('admin/header', $userData);
         $this->load->view('admin/sidebar');
-        $this->load->view('admin/interviewSchedule');
+        $this->load->view('admin/interviewSchedule', $userData);
         $this->load->view('admin/footer');
+        
+    }
+
+    public function addingInterviewSchedule()
+    {
+        $userData['title'] = 'Adding Interview Schedule';
+        $userData['user']= $this->session->userdata();
+
+        $getData= $this->m_buddyEventRegistration->eventInterview(); 
+        $arr = array();
+        foreach($getData as $i) {
+            array_push($arr, $i);
+        }
+        $userData['eventData'] = $arr;
+
+        $this->form_validation->set_rules('eventTitle', 'event title', 'required|trim');
+        $this->form_validation->set_rules('interviewTime', 'interview time', 'required|trim');
+        $this->form_validation->set_rules('interviewDate', 'interview time', 'required|trim');
+        $this->form_validation->set_rules('interviewPlace', 'interview time', 'required|trim');
+
+        if($this->form_validation->run() == false){
+            $this->load->view('admin/header', $userData);
+            $this->load->view('admin/sidebar');
+            $this->load->view('admin/addingInterviewSchedule', $userData);
+            $this->load->view('admin/footer');
+        } else {
+            $data =[
+                'idEvent' => htmlspecialchars($this->input->post('eventTitle', true)),
+                'interviewDate' => htmlspecialchars($this->input->post('interviewDate', true)),
+                'interviewTime' => htmlspecialchars($this->input->post('interviewTime', true)),
+                'interviewPlace' => htmlspecialchars($this->input->post('interviewPlace', true)),
+            ];
+        
+            $this->db->insert('interview_schedule', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Interview Schedule added!</div>');
+            redirect('admin/addingInterviewSchedule');
+        }
     }
 
     public function note()
