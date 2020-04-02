@@ -63,8 +63,8 @@
                         <td data-label="Event Date"><?= $ue["eventDate"]; ?></td>
                         <td data-label="Email">
                             <?php if( $ue['status'] == 'interview' ) :?>
-                                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
-                                    <?= $ue['status']; ?>
+                                <button type="button"class="btn btn-outline-secondary" id="btnModal" data-toggle="modal" data-target="#exampleModal" onclick="call(<?= $ue['idEvent']; ?>)">
+                                    <?= $ue['status']; ?> 
                                 </button>
                             <?php else : ?>
                                 <?= $ue['status']; ?>
@@ -94,25 +94,25 @@
                 <label>Event Name :</label>
             </div>
             <div class="col-md-8">
-                <label>Event Title</label>
+                <label id="eventTitle"></label>
             </div>
             <div class="col-md-4 text-right">
                 <label>Interview Date :</label>
             </div>
             <div class="col-md-8">
-                <label>Kamis , 27 Juni 2019</label>
+                <label id="interviewDate"></label>
             </div>
             <div class="col-md-4 text-right">
                 <label>Interview Time :</label>
             </div>
             <div class="col-md-8">
-                <label>09:30</label>
+                <label id="interviewTime"></label>
             </div>
             <div class="col-md-4 text-right">
                 <label>Interview Place :</label>
             </div>
             <div class="col-md-8">
-                <label>UIB</label>
+                <label id="interviewPlace"></label>
             </div>
         </div>
       </div>
@@ -122,3 +122,20 @@
     </div>
   </div>
 </div>
+
+<script>
+const call = (id) => {
+
+    $('#exampleModal').modal();
+    $.get({
+        url: '<?= base_url( ); ?>user/interviewData/' + id,
+        dataType: 'json',
+        success: function(data) {
+            $("#eventTitle").html(`<label>${data[0].eventTitle}</label>`);
+            $("#interviewDate").html(`<label>${data[0].interviewDate}</label>`);
+            $("#interviewTime").html(`<label>${data[0].interviewTime}</label>`);
+            $("#interviewPlace").html(`<label>${data[0].interviewPlace}</label>`);
+        }   
+    });
+}
+</script>
