@@ -10,8 +10,8 @@
                     <th>Name</th>
                     <th>Photo</th>
                     <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Url Video</th>
+                    <th style="white-space:nowrap">Phone Number</th>
+                    <th style="white-space:nowrap">Url Video</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -19,7 +19,7 @@
             <tbody style="word-break: break-word">
                 <?php foreach ($buddy as $b ) { ?>
                     <tr>
-                        <td data-label="NPM"><?= $b["npmUser"]; ?></td>
+                        <td data-label="NPM" style="white-space:nowrap"><?= $b["npmUser"]; ?></td>
                         <td data-label="Name"><?= $b["nameMahasiswa"]; ?></td>
                         <td data-label="Photo">
                             <img width="100px" src="<?= base_url('assets/'); ?>buddy_img/<?= $b["image"]; ?>">
@@ -27,7 +27,7 @@
                         <td data-label="Email"><?= $b["email"]; ?></td>
                         <td data-label="Phone Number"><?= $b["noPhoneMahasiswa"]; ?></td>
                         <td data-label="Url Video"> <a href="<?= $b["urlVideo"]; ?>"><?= $b["urlVideo"]; ?></a> </td>
-                        <td data-label="Status"><?= $b["status"]; ?></td>
+                        <td data-label="Status" style="white-space:nowrap"><?= $b["status"]; ?></td>
                         <td data-label="Action">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
