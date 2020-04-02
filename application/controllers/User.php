@@ -118,12 +118,21 @@ class User extends CI_Controller
     public function yourEvent()
     {
         $userData['title'] = 'Your Event';
-        $userData['user']= $this->session->userdata(); 
+        $userData['user']= $this->session->userdata();
+
         $userEvent = $this->m_buddyEventRegistration->yourEvent($this->session->userdata('npmUser'));
         $userData['userEvent'] = $userEvent;
+
         $this->load->view('templates/index_header', $userData);
         $this->load->view('user/yourEvent', $userData);
         $this->load->view('templates/index_footer');
+    }
 
+    public function interviewData($id){
+        $interviewSchedule = $this->m_buddyEventRegistration->interviewScheduleData($id);
+        $data = json_encode($interviewSchedule);
+        echo $data;
     }
 }
+
+// json_decode(json_encode($IdEvent), true);
