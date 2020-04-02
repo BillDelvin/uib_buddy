@@ -188,9 +188,6 @@ class Admin extends CI_Controller
             array_push($arr, $i);
         }
         $userData['interviewData'] = $arr;
-
-        // $getData = $this->db->get_where('interview_schedule')->result_array();
-        // $userData['interviewData'] = $getData;
     
         $this->load->view('admin/header', $userData);
         $this->load->view('admin/sidebar');
