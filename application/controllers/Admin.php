@@ -11,7 +11,7 @@ class Admin extends CI_Controller
         $this->load->library('user_agent');
         $this->load->helper(array('form', 'url'));
         $this->load->model('m_buddyEventRegistration');
-        if(!$this->session->userdata('npmUser')) {
+        if( mpty( $this->session->userdata('npmUser') ) ) {
             redirect("welcome");
         }
     }
