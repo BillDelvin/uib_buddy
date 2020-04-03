@@ -11,7 +11,7 @@ class Admin extends CI_Controller
         $this->load->library('user_agent');
         $this->load->helper(array('form', 'url'));
         $this->load->model('m_buddyEventRegistration');
-        if(!$this->session->userdata()) {
+        if(!$this->session->userdata('npmUser')) {
             redirect("welcome");
         }
     }
@@ -187,6 +187,7 @@ class Admin extends CI_Controller
         foreach($getData as $i) {
             array_push($arr, $i);
         }
+        
         $userData['interviewData'] = $arr;
     
         $this->load->view('admin/header', $userData);
@@ -230,6 +231,45 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Interview Schedule added!</div>');
             redirect('admin/addingInterviewSchedule');
         }
+    }
+
+    public function updateInterviewSchedule($id)
+    {
+        $userData['title'] = "Update Interview Schedule";
+        $userData['user'] = $this->session->userdata();
+
+        $getData = $this->m_buddyEventRegistration->getInterviewSchdule($id);
+        $userData['interviewData'] = $getData; 
+
+        $this->form_validation->set_rules('interviewTime', 'interview time', 'required|trim');
+        $this->form_validation->set_rules('interviewDate', 'interview time', 'required|trim');
+        $this->form_validation->set_rules('interviewPlace', 'interview time', 'required|trim');
+
+        if($this->form_validation->run() == false){
+            $this->load->view('admin/header', $userData);
+            $this->load->view('admin/sidebar');
+            $this->load->view('admin/updateinterviewSchedule', $userData);
+            $this->load->view('admin/footer');
+        } else {
+            $data =[
+                'interviewDate' => htmlspecialchars($this->input->post('interviewDate', true)),
+                'interviewTime' => htmlspecialchars($this->input->post('interviewTime', true)),
+                'interviewPlace' => htmlspecialchars($this->input->post('interviewPlace', true)),
+            ];
+
+            $this->db->where('idInterview', $id);
+            $this->db->update('interview_schedule', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Event Update successfully! </div>');
+            redirect('admin/updateInterviewSchedule/'.$id);
+        }
+    }
+
+    public function deleteInterviewSchedule($idInterview)
+    {
+        $getData = $this->db->get_where('interview_schedule', ['idInterview' => $idInterview])->row_array();
+
+        $this->db->delete('interview_schedule', array('idInterview' => $idInterview)); 
+        redirect('admin/interviewSchedule');
     }
 
     public function note()
