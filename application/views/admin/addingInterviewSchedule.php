@@ -7,8 +7,6 @@
         <?= $this->session->flashdata('message'); ?>
         <div class="card-body">
             <?= form_open_multipart('admin/addingInterviewSchedule'); ?>
-                <!-- <input type="text" value="<?= $idData; ?>" disabled> -->
-                <!-- event title -->
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col-12">
