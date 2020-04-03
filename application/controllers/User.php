@@ -10,7 +10,7 @@ class User extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'email','url'));
         $this->load->model('m_buddyEventRegistration');
-        if(empty($this->session->userdata())) {
+        if( empty( $this->session->userdata('npmUser') ) ) {
             redirect("welcome");
         }
     }
