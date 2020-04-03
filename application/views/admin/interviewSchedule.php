@@ -25,7 +25,7 @@
                         <td data-label="Interview Place"><?= $interview["interviewPlace"]; ?></td>
                         <td data-label="Action">
                             <a href="<?= base_url('admin/deleteInterviewSchedule/'.$interview['idInterview']) ?>" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
-                            <a href="" class="btn btn-outline-secondary" value=""> <i class="fas fa-edit"></i> </a> 
+                            <a href="<?= base_url('admin/updateInterviewSchedule/'.$interview['idInterview']) ?>" class="btn btn-outline-secondary" value="<?= $interview["idInterview"]; ?>"> <i class="fas fa-edit"></i> </a> 
                         </td>
                     </tr>
                 <?php $i++; ?>
