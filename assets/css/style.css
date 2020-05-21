@@ -1,4 +1,4 @@
-.aboutus h1 {
+.aboutus h2 {
 	padding-top: 25px;
 	text-align: center;
 	font-weight: 600;
@@ -7,5 +7,32 @@
 .aboutus p {
 	font-weight: 500;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.benefits h2 {
+	padding-top: 25px;
+	text-align: center;
+	font-weight: 600;
+}
+
+.benefits ol {
+	font-weight: 500;
+	padding-left: 4rem;
+	padding-top: 10px;
+	font-size: 18px;
+}
+
+.criteria h2 {
+	padding-top: 25px;
+	text-align: center;
+	font-weight: 600;
+}
+
+.criteria ol {
+	font-weight: 500;
+	padding-left: 4rem;
+	font-size: 18px;
+	padding-top: 10px;
 }
