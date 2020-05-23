@@ -49,13 +49,19 @@
 		<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active" data-interval="10000">
-				<img src="<?= base_url('assets/') ?>img/buddy_1.png" class="d-block w-100">
+					<img src="<?= base_url('assets/') ?>img/buddy1.png" class="d-block w-100">
 				</div>
 				<div class="carousel-item" data-interval="2000">
-				<img src="<?= base_url('assets/') ?>img/buddy_2.png" class="d-block w-100">
+					<img src="<?= base_url('assets/') ?>img/buddy2.png" class="d-block w-100">
 				</div>
 				<div class="carousel-item">
-				<img src="<?= base_url('assets/') ?>img/buddy_3.png" class="d-block w-100">
+					<img src="<?= base_url('assets/') ?>img/buddy3.png" class="d-block w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="<?= base_url('assets/') ?>img/buddy4.png" class="d-block w-100">
+				</div>
+				<div class="carousel-item">
+					<img src="<?= base_url('assets/') ?>img/buddy5.png" class="d-block w-100">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
@@ -72,8 +78,29 @@
 	<!-- container -->	
 	<div class="container">
 		<div class="aboutus" id="aboutus"> 
-			<h1>ABOUT US</h1>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+			<h2>What is a Buddy?</h2>
+			<p>Buddy is a UIB student who will help and accompany international students that come to UIB. Buddy will help international students settle in UIB, accompany them, help lecturers teach them and provide translation help, amongst other things.</p>
+		</div>
+		<div class="benefits">
+			<h2>What are the benefits of being a Buddy?</h2>
+			<ol>
+				<li>You will have an opportunity to make friends with international students from various countries.</li>
+				<li>You can widen your perspective and educate yourself about the cultures of other countries. And share Indonesian culture to them, as well!</li>
+				<li>You will have a chance to learn a new language.</li>
+				<li>You can practice your English and other foreign languages.</li>
+				<li>You will have an opportunity to train yourself in communication skills.</li>
+				<li>You will get a certificate as Buddy from IRO.</li>
+			</ol>
+		</div>
+		<div class="criteria">
+			<h2>What are the criteria of being a Buddy?</h2>
+			<ol>
+				<li>You are an outgoing person </li>
+				<li>You are a responsible person</li>
+				<li>You can speak English actively </li>
+				<li>You have a strong commitment to follow schedule from IRO for a month</li>
+				<li>You have basic knowledge about Batam and Indonesian culture</li>
+			</ol>
 		</div>
 	</div>
 
