@@ -25,6 +25,12 @@
         </a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('email/email'); ?>">
+            <i class="fas fa-envelope"></i>
+            <span>Send Email</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/note'); ?>">
             <i class="fas fa-list-ul"></i>
             <span>Note</span>
@@ -36,6 +42,7 @@
             <span>Landing Page</span>
         </a>
     </li>
+    
 </ul>
 
 <div id="content-wrapper">
