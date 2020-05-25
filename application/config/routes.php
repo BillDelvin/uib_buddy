@@ -54,3 +54,4 @@ $route['sessionex'] = 'Session_Controller';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['upload'] = 'Upload';
+$route['email'] = 'Email';

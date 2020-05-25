@@ -8,6 +8,8 @@ class Admin extends CI_Controller
         parent::__construct(); // ini digunakan untuk memanggil costruct yang di ci controller
         $this->load->library('session');
         $this->load->library('form_validation');
+        $this->load->library('email');
+        $this->load->config('email');
         $this->load->library('user_agent');
         $this->load->helper(array('form', 'url'));
         $this->load->model('m_buddyEventRegistration');

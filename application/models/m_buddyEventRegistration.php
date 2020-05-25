@@ -43,8 +43,13 @@ class m_buddyEventRegistration extends CI_Model
         return $query;
     }
 
-    function getBuddyEmail($id){
+    function getBuddy($id){
         $query = $this->db->query("SELECT ber.idEvent, ber.npmUser, u.nameMahasiswa, ber.email, ber.status FROM buddy_event_registration ber left join event_buddy eb on ber.idEvent = eb.idEvent left join users u on ber.npmUser = u.npmUser WHERE ber.status = 'accept' AND eb.idEvent = $id")->result_array();
+        return $query;
+    }
+    
+    function getEmailBuddy($id){
+        $query = $this->db->query("SELECT ber.email FROM buddy_event_registration ber left join event_buddy eb on ber.idEvent = eb.idEvent left join users u on ber.npmUser = u.npmUser WHERE ber.status = 'accept' AND eb.idEvent = $id")->result_array();
         return $query;
     }
 }
