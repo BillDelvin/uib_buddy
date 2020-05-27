@@ -16,9 +16,15 @@
 			<li class="nav-item">
 				<a class="nav-link font-weight-bold" href="#aboutus">About Us</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link font-weight-bold" href="<?= base_url('user/event'); ?>">Event</a>
-			</li>
+			<?php if(!isset($_SESSION['npmUser'])): ?>
+				<li class="nav-item">
+					<!-- <a class="nav-link font-weight-bold" href="<?= base_url('user/buddyEvent'); ?>">Event</a> -->
+				</li>
+			<?php else: ?>
+				<li class="nav-item">
+					<a class="nav-link font-weight-bold" href="<?= base_url('user/buddyEvent'); ?>">Event</a>
+				</li>
+			<?php endif;?>
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
 			<?php if(!isset($_SESSION['npmUser'])) : ?>

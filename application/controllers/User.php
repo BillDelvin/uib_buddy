@@ -25,12 +25,14 @@ class User extends CI_Controller
         $this->load->view('templates/index_footer');
     }
 
-    public function event()
+    public function buddyEvent()
     {
         $userData['title'] = 'Buddy Event';
         $userData['user']= $this->session->userdata();
-        $getData = $this->db->get('event_buddy')->result();
+        $getData = $this->m_buddyEventRegistration->eventBuddy();
         $userData['event'] = json_decode(json_encode($getData), true);
+        $date = date("Y-m-d");
+        $userData['date'] = $date;
 
         if(!$this->session->userdata('npmUser')){
             $this->load->view('templates/index_header', $userData);
@@ -111,7 +113,7 @@ class User extends CI_Controller
 
             $this->db->insert('buddy_event_registration', $data);
             $this->session->set_flashdata('message', '<p class="alert alert-success" role="alert">Congratulations! you have successfully registered as a Buddy</p>');
-            redirect('user/event'); 
+            redirect('user/buddyEvent'); 
         }
     }
 
@@ -134,5 +136,3 @@ class User extends CI_Controller
         echo $data;
     }
 }
-
-// json_decode(json_encode($IdEvent), true);

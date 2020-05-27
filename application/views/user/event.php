@@ -1,6 +1,6 @@
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  	<a class="navbar-brand" href="#">
+  	<a class="navbar-brand" href="<?= base_url('welcome') ?>">
   		<img src="<?= base_url('assets/	'); ?>img/logo_UIB_White.png" width="40" alt="">
   	</a>
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,9 +51,9 @@
 				</div>
                 <div class="card-body">
                     <p class="card-text"><?= $e["eventDescription"]; ?></p>
-					<p class="card-text">Event Date : <?= $e["eventDate"]; ?></p>
-					<?php if(!isset($_SESSION['npmUser'])) : ?>
-						<a href="<?= base_url('auth/sign_in') ?>" class="btn btn-primary">Register</a>
+					<p class="card-text">Event Date : <?= $e["eventDate"];?></p>
+					<?php if($e["eventDate"] <= $date ) : ?>
+						<button class="btn btn-primary" disabled>Event Has Passed</button>
 					<?php elseif (isset($_SESSION['npmUser'])) : ?>
 						<?php if( in_array( $e['idEvent'], $idEvent)) : ?>
 							<button class="btn btn-primary" disabled>Already Register</button>
