@@ -1,14 +1,21 @@
 <div class="container-fluid">
     <div class=" col-md-6 text-left pb-3">
-        <a href="<?= base_url('admin/email'); ?>"><i class="fas fa-3x fa-arrow-left"></i></a>
+        <a href="<?= base_url('email/email'); ?>"><i class="fas fa-3x fa-arrow-left"></i></a>
     </div>
     <div class="row">
         <div class="col-md-4">
-        <?= $this->session->flashdata('email_sent'); ?>
-        <?= form_open_multipart('email/emailForm/'.$idEvent); ?>
-                <div class="text-right">
-                    <button type="submit" class="btn btn-outline-secondary">Send</button>
-                </div>
+            <?= $this->session->flashdata('email_sent'); ?>
+            <?= form_open_multipart('email/emailForm/'.$idEvent); ?>
+                <?php if(!$buddyEmail) : ?>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-outline-secondary" disabled>Send</button>
+                    </div>
+                <?php else : ?>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-outline-secondary">Send</button>
+                    </div>
+                <?php endif; ?>
+
                 <label for="subject">Subject : </label>
                 <input type="text" class="form-control" name="subject" id="subject" required/>
                 <?= form_error('subject', '<small class="text-danger">', '</small>'); ?>
@@ -19,7 +26,6 @@
             </form>
         </div>
         <div class="col-md-8">
-            
             <table class="table table-striped">
                 <thead>
                     <tr>
