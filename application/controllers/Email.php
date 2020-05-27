@@ -55,6 +55,8 @@ class Email extends CI_Controller
         } else {
             $subject = htmlspecialchars($this->input->post('subject', true));
             $message = htmlspecialchars($this->input->post('message', true));
+            $date = date("Y-m-d");
+            $time = date("H:i:s");
 
             $this->load->library('email');
             $config = Array();
@@ -77,18 +79,39 @@ class Email extends CI_Controller
             $this->email->to($email);
             $this->email->subject($subject);
             $this->email->message($message);
-            // $this->email->send();
 
-            // Send mail
+            $data = [
+                "idEvent" => $idEvent,
+                "email" => $email,
+                "subject" => htmlspecialchars($subject),
+                "message" => htmlspecialchars($message),
+                'date' => $date,
+                'time' => $time
+            ];
+
             if($this->email->send()) {
+                $this->db->insert('email', $data);
                 $this->session->set_flashdata("email_sent","Congragulation Email Send Successfully.");
                 redirect('email/emailForm/'.$idEvent);
             }
             else{
-                show_error($this->email->print_debugger());
                 $this->session->set_flashdata("email_sent","You have encountered an error");
                 redirect('email/emailForm/'.$idEvent);
             }
         }
+    }
+
+    public function emailSent()
+    {
+        $userData['title'] = 'Email Sent';
+        $userData['user']= $this->session->userdata();
+        $getData = $this->m_buddyEventRegistration->getEmailSent();
+        // var_dump($getData);die;
+    
+        $userData["emailSent"] = $getData;
+        $this->load->view('admin/header', $userData);
+        $this->load->view('admin/sidebar');
+        $this->load->view('admin/email/emailSent');
+        $this->load->view('admin/footer');
     }
 }
