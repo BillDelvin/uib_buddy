@@ -52,4 +52,9 @@ class m_buddyEventRegistration extends CI_Model
         $query = $this->db->query("SELECT ber.email FROM buddy_event_registration ber left join event_buddy eb on ber.idEvent = eb.idEvent left join users u on ber.npmUser = u.npmUser WHERE ber.status = 'accept' AND eb.idEvent = $id")->result_array();
         return $query;
     }
+
+    function getEmailSent(){
+        $query = $this->db->query("SELECT em.idEvent,eb.eventTitle, em.email, em.subject, em.message, em.date, em.time FROM email em left join event_buddy eb on eb.idEvent = em.idEvent")->result_array();
+        return $query;
+    }
 }
