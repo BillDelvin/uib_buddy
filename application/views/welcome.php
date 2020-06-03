@@ -124,19 +124,21 @@
 	<div class="container pb-5">
 		<div class="criteria">
 			<h2>What are the criteria of being a Buddy?</h2>
-			<div class="row pt-3">
-				<div  class="col-sm-12 col-md-7 col-lg-9">
-					<ul>
-						<li>You are an outgoing person </li>
-						<li>You are a responsible person</li>
-						<li>You can speak English actively </li>
-						<li>You have a strong commitment to follow schedule from IRO for a month</li>
-						<li>You have basic knowledge about Batam and Indonesian culture</li>
-					</ul>
+			<div class="d-flex flex-nowrap">
+				<div class="row pt-3">
+					<div  class="col-sm-12 col-md-7 col-lg-9 order-1 oreder-sm-0 oreder-md-0 order-lg-0">
+						<ul>
+							<li>You are an outgoing person </li>
+							<li>You are a responsible person</li>
+							<li>You can speak English actively </li>
+							<li>You have a strong commitment to follow schedule from IRO for a month</li>
+							<li>You have basic knowledge about Batam and Indonesian culture</li>
+						</ul>
+					</div>
+					<div class="col-sm-12 col-md-5 col-lg-3 text-right order-0 oreder-sm-1 order-md-1 oreder-lg-1">
+						<img class="img-thumbnail" src="<?= base_url('assets/') ?>img/criteria.png"/>
+					</div>					
 				</div>
-				<div class="col-sm-12 col-md-5 col-lg-3 text-right">
-					<img class="img-thumbnail" src="<?= base_url('assets/') ?>img/criteria.png"/>
-				</div>					
 			</div>
 		</div>
 	</div>
