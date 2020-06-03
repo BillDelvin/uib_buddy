@@ -55,19 +55,19 @@
 		<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active" data-interval="10000">
-					<img src="<?= base_url('assets/') ?>img/buddy1.png" class="d-block w-100">
+					<img src="<?= base_url('assets/') ?>img/Optimized-buddy1.png" class="d-block w-100">
 				</div>
 				<div class="carousel-item" data-interval="2000">
-					<img src="<?= base_url('assets/') ?>img/buddy2.png" class="d-block w-100">
+					<img src="<?= base_url('assets/') ?>img/Optimized-buddy2.png" class="d-block w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="<?= base_url('assets/') ?>img/buddy3.png" class="d-block w-100">
+					<img src="<?= base_url('assets/') ?>img/Optimized-buddy3.png" class="d-block w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="<?= base_url('assets/') ?>img/buddy4.png" class="d-block w-100">
+					<img src="<?= base_url('assets/') ?>img/Optimized-buddy4.png" class="d-block w-100">
 				</div>
 				<div class="carousel-item">
-					<img src="<?= base_url('assets/') ?>img/buddy5.png" class="d-block w-100">
+					<img src="<?= base_url('assets/') ?>img/Optimized-buddy5.png" class="d-block w-100">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
