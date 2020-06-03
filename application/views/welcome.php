@@ -82,14 +82,14 @@
 	</div>
 
 	<!-- container -->	
-	<div class="container pb-4">
+	<div class="container pb-2">
 		<div class="aboutus" id="aboutus"> 
 			<h2>What is a Buddy?</h2>
 			<p>Buddy is a UIB student who will help and accompany international students that come to UIB. Buddy will help international students settle in UIB, accompany them, help lecturers teach them and provide translation help, amongst other things.</p>
 		</div>
 	</div>
 	<div class="container pb-5">
-		<div class="main-carousel pt-4" data-flickity='{ "cellAlign": "left", "freeScroll":true}'>
+		<div class="main-carousel" data-flickity='{ "cellAlign": "left", "freeScroll":true}'>
 			<img class="carousel-image" src="<?= base_url('assets/') ?>img/card_buddy_1.png" />
 			<img class="carousel-image" src="<?= base_url('assets/') ?>img/card_buddy_2.png" />
 			<img class="carousel-image" src="<?= base_url('assets/') ?>img/card_buddy_3.png" />
@@ -124,13 +124,20 @@
 	<div class="container pb-5">
 		<div class="criteria">
 			<h2>What are the criteria of being a Buddy?</h2>
-			<ul>
-				<li>You are an outgoing person </li>
-				<li>You are a responsible person</li>
-				<li>You can speak English actively </li>
-				<li>You have a strong commitment to follow schedule from IRO for a month</li>
-				<li>You have basic knowledge about Batam and Indonesian culture</li>
-			</ul>
+			<div class="row pt-3">
+				<div  class="col-sm-12 col-md-7 col-lg-9">
+					<ul>
+						<li>You are an outgoing person </li>
+						<li>You are a responsible person</li>
+						<li>You can speak English actively </li>
+						<li>You have a strong commitment to follow schedule from IRO for a month</li>
+						<li>You have basic knowledge about Batam and Indonesian culture</li>
+					</ul>
+				</div>
+				<div class="col-sm-12 col-md-5 col-lg-3 text-right">
+					<img class="img-thumbnail" src="<?= base_url('assets/') ?>img/criteria.png"/>
+				</div>					
+			</div>
 		</div>
 	</div>
 
