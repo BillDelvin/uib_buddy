@@ -24,6 +24,9 @@
     <!-- bootstrap -->
     <link href="<?= base_url('assets/'); ?>css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- flickity -->
+    <link href="<?= base_url('assets/'); ?>css/flickity.min.css" rel="stylesheet">
+
     <!-- style -->
     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
 

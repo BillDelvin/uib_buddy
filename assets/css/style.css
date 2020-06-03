@@ -1,3 +1,6 @@
+.bg-color {
+	background-color: #eeeeee;
+}
 .aboutus h2 {
 	padding-top: 25px;
 	text-align: center;
@@ -17,11 +20,11 @@
 	font-weight: 600;
 }
 
-.benefits ol {
+.benefits ul {
 	font-weight: 500;
 	padding-left: 4rem;
 	padding-top: 10px;
-	font-size: 18px;
+	font-size: 17px;
 }
 
 .criteria h2 {
@@ -30,9 +33,39 @@
 	font-weight: 600;
 }
 
-.criteria ol {
+.criteria ul {
 	font-weight: 500;
 	padding-left: 4rem;
 	font-size: 18px;
 	padding-top: 10px;
+}
+
+.carousel-image {
+	display: inline-block;
+	height: auto;
+	/* set min-width,
+       allow images to determine cell width */
+	width: auto;
+	max-width: 100%;
+	margin-right: 10px;
+	/* vertically center */
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.carousel.is-fullscreen .carousel-image {
+	height: auto;
+	max-height: 100%;
+}
+
+.footer {
+	position: absolute;
+	font-size: 17px;
+	padding-top: 10px;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #007bff;
+	color: white;
+	text-align: center;
 }

@@ -8,6 +8,9 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/'); ?>vendor/datatables/jquery.dataTables.min.js"></script>
 
+<!-- flickity -->
+<script src="<?= base_url('assets/'); ?>js/flickity.pkgd.min.js"></script>
+
 <!-- script -->
 <script src="<?= base_url('assets/'); ?>js/script.js"></script>
 
