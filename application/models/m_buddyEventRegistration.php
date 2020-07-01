@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class m_buddyEventRegistration extends CI_Model
 {
     function eventBuddy(){
-        $query = $this->db->query("SELECT * FROM event_buddy ORDER BY eventDate DESC")->result();
+        $query = $this->db->query("SELECT * FROM event_buddy WHERE status =1 ORDER BY eventDate DESC")->result();
         return $query;
     }
 
