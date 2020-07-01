@@ -29,7 +29,7 @@ class m_buddyEventRegistration extends CI_Model
     }
 
     function interviewSchedule(){
-        $query = $this->db->query("SELECT inter.idInterview ,inter.idEvent, eb.eventTitle, inter.interviewTime, inter.interviewDate, inter.interviewPlace FROM interview_schedule inter LEFT JOIN event_buddy eb on inter.idEvent = eb.idEvent")->result_array();
+        $query = $this->db->query("SELECT inter.idInterview ,inter.idEvent, eb.eventTitle, inter.interviewTime, inter.interviewDate, inter.interviewPlace, eb.status FROM interview_schedule inter LEFT JOIN event_buddy eb on inter.idEvent = eb.idEvent WHERE eb.status = 1")->result_array();
         return $query;
     }
 
@@ -44,7 +44,7 @@ class m_buddyEventRegistration extends CI_Model
     }
 
     function getEventName(){
-        $query = $this->db->query("SELECT idEvent, eventTitle, eventDescription FROM event_buddy")->result_array();
+        $query = $this->db->query("SELECT idEvent, eventTitle, eventDescription, status FROM event_buddy WHERE status = 1")->result_array();
         return $query;
     }
 
