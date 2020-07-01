@@ -34,7 +34,7 @@ class Admin extends CI_Controller
 
         $userData['title'] = 'Event List';
         $userData['user']= $this->session->userdata();
-        $getData= $this->db->get('event_buddy')->result();
+        $getData= $this->db->get_where('event_buddy', array("status" => 1))->result();
         $userData["eventBuddy"] = json_decode(json_encode($getData), true);
 
         $this->load->view('admin/header', $userData);
@@ -105,7 +105,9 @@ class Admin extends CI_Controller
     {
         $userData['event'] = $this->db->get_where('event_buddy', ['idEvent' => $idEvent])->row_array();
 
-        $this->db->delete('event_buddy', array('idEvent' => $idEvent)); 
+        $this->db->set("status", "2");
+        $this->db->where("idEvent", $idEvent);
+        $this->db->update('event_buddy'); 
         redirect('admin/eventList');
     }
 
@@ -113,7 +115,7 @@ class Admin extends CI_Controller
     {
         $userData['title'] = 'Event';
         $userData['user']= $this->session->userdata();
-        $getData= $this->db->get('event_buddy')->result();
+        $getData= $this->db->get_where('event_buddy', array("status" => 1))->result();
         $userData["eventBuddy"] = json_decode(json_encode($getData), true);
 
         $this->load->view('admin/header', $userData);
