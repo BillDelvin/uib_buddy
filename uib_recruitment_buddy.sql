@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Bulan Mei 2020 pada 10.15
+-- Waktu pembuatan: 01 Jul 2020 pada 17.49
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.3.14
 
@@ -44,7 +44,7 @@ CREATE TABLE `buddy_event_registration` (
 --
 
 INSERT INTO `buddy_event_registration` (`idRegistration`, `idEvent`, `npmUser`, `email`, `noPhoneMahasiswa`, `urlVideo`, `image`, `status`) VALUES
-(1, 1, '1741230', 'billcollin17@gmail.com', '470', 'Est aut anim reprehe', 'random_400x400.png', 'accept'),
+(1, 1, '1741230', 'billcollin17@gmail.com', '470', 'Est aut anim reprehe', 'random_400x400.png', 'interview'),
 (2, 2, '1731055', 'vyxij@mailinator.net', '1000', 'Illo id obcaecati ea', 'pexels-photo-2690323.jpeg', 'accept'),
 (3, 6, '1731032', 'rywomi@mailinator.net', '832', 'Tempor excepteur tem', 'random_500x500.png', 'pending'),
 (4, 1, '1731055', 'billdelvin7@gmail.com', '497', 'https://www.youtube.com/watch?v=HhoATZ1Imtw&list=RDHhoATZ1Imtw&start_radio=1', 'random_400x400.png', 'accept'),
@@ -52,7 +52,8 @@ INSERT INTO `buddy_event_registration` (`idRegistration`, `idEvent`, `npmUser`, 
 (6, 5, '1741230', 'japaryso@mailinator.net', '422', 'Ea enim magna conseq', 'random_500x500.png', 'interview'),
 (7, 1, '1741001', 'bill@gmail.com', '0812341234', 'https://www.youtube.com/', 'random_400x400.png', 'interview'),
 (8, 5, '1731055', 'billdelvin@gmail.com', '123412341234', 'https://www.youtube.com/', 'random_400x400.png', 'interview'),
-(9, 1, '1931137', 'billcollin111@gmail.com', '08123456789', 'https://www.youtube.com/', 'random_400x400.png', 'accept');
+(9, 1, '1931137', 'billcollin111@gmail.com', '08123456789', 'https://www.youtube.com/', 'random_400x400.png', 'accept'),
+(11, 9, '1731055', 'billdelvin6@gmail.com', '0812345678', 'https://www.youtube.com/', 'random_500x500.png', 'pending');
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,9 @@ CREATE TABLE `email` (
 --
 
 INSERT INTO `email` (`idEmail`, `idEvent`, `email`, `subject`, `message`, `date`, `time`) VALUES
-(1, 1, 'billcollin17@gmail.com , billdelvin7@gmail.com , billcollin111@gmail.com', 'Doloribus qui quis s', 'Hic eu sunt eveniet', '2020-05-26', '09:34:30');
+(1, 1, 'billcollin17@gmail.com , billdelvin7@gmail.com , billcollin111@gmail.com', 'Doloribus qui quis s', 'Hic eu sunt eveniet', '2020-05-26', '09:34:30'),
+(2, 1, 'billdelvin7@gmail.com , billcollin111@gmail.com', 'Universitas International Batam', 'Selamat anda terpilih sebagai jadi buddy di universitas international batam', '2020-05-28', '01:49:50'),
+(3, 1, 'billdelvin7@gmail.com , billcollin111@gmail.com', 'Universitas International Batam', 'Selamat Anda terpilih sebagai Buddy di universitas international batam', '2020-05-28', '01:51:22');
 
 -- --------------------------------------------------------
 
@@ -87,19 +90,21 @@ CREATE TABLE `event_buddy` (
   `idEvent` int(11) NOT NULL,
   `eventTitle` longtext NOT NULL,
   `eventDescription` longtext NOT NULL,
-  `eventDate` date NOT NULL
+  `eventDate` date NOT NULL,
+  `status` int(11) NOT NULL COMMENT '1 active 2 disactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `event_buddy`
 --
 
-INSERT INTO `event_buddy` (`idEvent`, `eventTitle`, `eventDescription`, `eventDate`) VALUES
-(1, 'Lorem Ipsum', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', '2020-03-01'),
-(2, 'Why do we use it?', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.', '2020-03-01'),
-(5, 'Where does it come from?', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.', '2020-03-01'),
-(6, 'Where can I get some?', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text.', '2020-03-01'),
-(7, 'UIB', 'Kuliah Malam', '2020-05-05');
+INSERT INTO `event_buddy` (`idEvent`, `eventTitle`, `eventDescription`, `eventDate`, `status`) VALUES
+(1, 'Lorem Ipsum', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', '2020-03-01', 2),
+(2, 'Why do we use it?', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.', '2020-03-01', 1),
+(5, 'Where does it come from?', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.', '2020-03-01', 1),
+(6, 'Where can I get some?', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text.', '2020-03-01', 2),
+(7, 'Lorem Ipsum', 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.', '2020-05-05', 1),
+(9, 'The standard Lorem Ipsum passage, used since the 1500s', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '2020-06-01', 1);
 
 -- --------------------------------------------------------
 
@@ -181,7 +186,8 @@ INSERT INTO `users` (`npmUser`, `nameMahasiswa`, `jurusanMahasiswa`, `password`,
 -- Indeks untuk tabel `buddy_event_registration`
 --
 ALTER TABLE `buddy_event_registration`
-  ADD PRIMARY KEY (`idRegistration`);
+  ADD PRIMARY KEY (`idRegistration`),
+  ADD UNIQUE KEY `idEvent_UNIQUE` (`idEvent`,`npmUser`);
 
 --
 -- Indeks untuk tabel `email`
@@ -221,19 +227,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `buddy_event_registration`
 --
 ALTER TABLE `buddy_event_registration`
-  MODIFY `idRegistration` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idRegistration` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `email`
 --
 ALTER TABLE `email`
-  MODIFY `idEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idEmail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `event_buddy`
 --
 ALTER TABLE `event_buddy`
-  MODIFY `idEvent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idEvent` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `interview_schedule`
@@ -246,6 +252,16 @@ ALTER TABLE `interview_schedule`
 --
 ALTER TABLE `note`
   MODIFY `idNote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `buddy_event_registration`
+--
+ALTER TABLE `buddy_event_registration`
+  ADD CONSTRAINT `fk_event` FOREIGN KEY (`idEvent`) REFERENCES `event_buddy` (`idEvent`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
