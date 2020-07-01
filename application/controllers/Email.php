@@ -64,8 +64,8 @@ class Email extends CI_Controller
             $config['smtp_host'] = 'smtp.gmail.com';
             $config['smtp_port'] = '587';
             $config['smtp_timeout'] = '30';    
-            $config['smtp_user'] = 'billdelvin6@gmail.com';
-            $config['smtp_pass'] = 'billdelvin1234';
+            $config['smtp_user'] = ''; //admin fill in here email 
+            $config['smtp_pass'] = ''; //admin fill in here password
             $config['smtp_crypto'] = 'tls';
             $config['mailpath'] = '/usr/sbin/sendmail';
             $config['charset'] = "utf-8";
@@ -75,7 +75,7 @@ class Email extends CI_Controller
             $config['wordwrap'] = TRUE;
             
             $this->email->initialize($config);
-            $this->email->from("billdelvin6@gmail.com", "bill delvin");
+            $this->email->from("", ""); //email admin and nickname admin 
             $this->email->to($email);
             $this->email->subject($subject);
             $this->email->message($message);
